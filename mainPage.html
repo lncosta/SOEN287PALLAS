@@ -22,6 +22,9 @@
       crossorigin="anonymous"
     />
 
+    <!--Manual CSS-->
+    <link rel="stylesheet" href="styles.css" />
+
     <!--Icons-->
     <script
       src="https://kit.fontawesome.com/ba7a137c00.js"
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <section id="title">
+    <section class="colored-section" id="title">
       <div class="container-fluid">
         <!--NavBar-->
         <nav class="navbar navbar-expand-lg">
@@ -86,7 +89,39 @@
             </ul>
           </div>
         </nav>
+        <div class="col-lg-6">
+          <h1 class="big-heading">Great Performances by Elite Performers</h1>
+        </div>
+        <div class="col-lg-6"></div>
+      </div>
+    </section>
 
+    <!--Gathering-->
+    <section class="white-section" id="gatherings">
+      <h2 class="section-heading">Book Now</h2>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-4 feature-box">
+            <i class="fas fa-birthday-cake fa-4x"></i>
+            <h3 class="feature-title">Birthday Party</h3>
+            <p>Theme Based Birthday Parties with gathering up to 50 People.</p>
+          </div>
+
+          <div class="col-lg-4 feature-box">
+            <i class="fas fa-gifts fa-4x"></i>
+            <h3 class="feature-title">Weddings</h3>
+            <p>Make your special day a memorable one.</p>
+          </div>
+
+          <div class="col-lg-4 feature-box">
+            <i class="fas fa-glass-cheers fa-4x"></i>
+            <h3 class="feature-title">Other Celebrations</h3>
+            <p>
+              Entertain the guests at your Celebrations. For all events such as
+              Baby Shower, Wedding Anniversaries etc.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -95,21 +130,15 @@
       <div id="performances-carousel" class="carousel slide" data-ride="false">
         <div class="carousel-inner">
           <div class="carousel-item active container-fluid">
-            <h2 class="testimonial-text">
-              Bubble Show
-            </h2>
+            <h2 class="testimonial-text">Bubble Show</h2>
             <em>Performer 1</em>
           </div>
           <div class="carousel-item container-fluid">
-            <h2 class="testimonial-text">
-              Magic Show
-            </h2>
+            <h2 class="testimonial-text">Magic Show</h2>
             <em>Performer 2</em>
           </div>
           <div class="carousel-item container-fluid">
-            <h2 class="testimonial-text">
-              Musical Performance
-            </h2>
+            <h2 class="testimonial-text">Musical Performance</h2>
             <em>Performer 2</em>
           </div>
         </div>
@@ -136,110 +165,107 @@
 
     <!--Features Section-->
     <section class="white-section" id="features">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-4 feature-box">
-              <i class="feature-icon fas fa-check-circle fa-4x"></i>
-              <h3 class="feature-title">Easy to Book.</h3>
-              <p>Book now for Great Performances at your Parties.</p>
-            </div>
-  
-            <div class="col-lg-4 feature-box">
-              <i class="feature-icon fas fa-bullseye fa-4x"></i>
-              <h3 class="feature-title">Elite Performers</h3>
-              <p>
-                We serve for various individual performers and group performers.
-              </p>
-            </div>
-  
-            <div class="col-lg-4 feature-box">
-              <i class="fas fa-hand-holding-usd fa-4x"></i>
-              <h3 class="feature-title">Reasonable Prices</h3>
-              <p>World Class Entertainment taking care of your Pocket.</p>
-            </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-4 feature-box">
+            <i class="feature-icon fas fa-check-circle fa-4x"></i>
+            <h3 class="feature-title">Easy to Book.</h3>
+            <p>Book now for Great Performances at your Parties.</p>
+          </div>
+
+          <div class="col-lg-4 feature-box">
+            <i class="feature-icon fas fa-bullseye fa-4x"></i>
+            <h3 class="feature-title">Elite Performers</h3>
+            <p>
+              We serve for various individual performers and group performers.
+            </p>
+          </div>
+
+          <div class="col-lg-4 feature-box">
+            <i class="fas fa-hand-holding-usd fa-4x"></i>
+            <h3 class="feature-title">Reasonable Prices</h3>
+            <p>World Class Entertainment taking care of your Pocket.</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
     <!-- Pricing -->
     <section class="white-section" id="pricing">
-        <h2 class="section-heading">Packages for Every Parties' Needs</h2>
-        <p>Simple and affordable price plans for your Parties.</p>
-        <div class="row">
-          <div class="col-lg-4 col-md-6 pricing-column">
-            <div class="card">
-              <div class="card-header"><h3>Bronze Package</h3></div>
-              <div class="card-body">
-                <h2 class="price-text">$</h2>
-                <p>Any 1 Performance</p>
-                <p>Personalized Greetings</p>
-                <p>*You can choose any one of 3 Performances</p>
-                <p>*You can customize the Greetings.</p>
-                <button
-                  type="button"
-                  class="btn btn-lg btn-block btn-dark"
-                >
-                  Book Now
-                </button>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-lg-4 col-md-6 pricing-column">
-            <div class="card">
-              <div class="card-header"><h3>Gold Package</h3></div>
-              <div class="card-body">
-                <h2 class="price-text">$</h2>
-                <p>2 Performances</p>
-                <p>Personalized Greetings</p>
-                <p>Kids Show</p>
-                <p>*You can customize the Greetings.</p>
-                <button type="button" class="btn btn-lg btn-block btn-dark">
-                  Book Now
-                </button>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-lg-4 pricing-column">
-            <div class="card">
-              <div class="card-header"><h3>Diamond Package</h3></div>
-              <div class="card-body">
-                <h2 class="price-text">$</h2>
-                <p>All 3 Performances</p>
-                <p>Personalized Greetings</p>
-                <p>Kids Show</p>
-                <p>A Special Surprise Performance</p>
-                <button type="button" class="btn btn-lg btn-block btn-dark">
-                  Book Now
-                </button>
-              </div>
+      <h2 class="section-heading">Packages for Every Parties' Needs</h2>
+      <p>Simple and affordable price plans for your Parties.</p>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 pricing-column">
+          <div class="card">
+            <div class="card-header"><h3>Bronze Package</h3></div>
+            <div class="card-body">
+              <h2 class="price-text">$</h2>
+              <p>Any 1 Performance</p>
+              <p>Personalized Greetings</p>
+              <p>*You can choose any one of 3 Performances</p>
+              <p>*You can customize the Greetings.</p>
+              <button type="button" class="btn btn-lg btn-block btn-dark">
+                Book Now
+              </button>
             </div>
           </div>
         </div>
-      </section>
 
-      <!--Tagline-->
-      <section class="colored-section" id="tagline">
-        <div class="container-fluid">
-          <h3 class="big-heading">
-            Great Performance at your Parties!! Just a Click away.
-          </h3>
-          <button type="button" class="btn btn-dark btn-lg download-btn">
-            Book Now
-          </button>
+        <div class="col-lg-4 col-md-6 pricing-column">
+          <div class="card">
+            <div class="card-header"><h3>Gold Package</h3></div>
+            <div class="card-body">
+              <h2 class="price-text">$</h2>
+              <p>2 Performances</p>
+              <p>Personalized Greetings</p>
+              <p>Kids Show</p>
+              <p>*You can customize the Greetings.</p>
+              <button type="button" class="btn btn-lg btn-block btn-dark">
+                Book Now
+              </button>
+            </div>
+          </div>
         </div>
-      </section>
 
-      <!-- Footer -->
+        <div class="col-lg-4 pricing-column">
+          <div class="card">
+            <div class="card-header"><h3>Diamond Package</h3></div>
+            <div class="card-body">
+              <h2 class="price-text">$</h2>
+              <p>All 3 Performances</p>
+              <p>Personalized Greetings</p>
+              <p>Kids Show</p>
+              <p>A Special Surprise Performance</p>
+              <button type="button" class="btn btn-lg btn-block btn-dark">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Tagline-->
+    <section class="colored-section" id="tagline">
+      <div class="container-fluid">
+        <h3 class="big-heading">
+          Great Performance at your Parties!! Just a Click away.
+        </h3>
+        <button type="button" class="btn btn-dark btn-lg download-btn">
+          Book Now
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="white-section" id="footer">
-        <div class="container-fluid">
-          <i class="footer-icon fab fa-twitter"></i>
-          <i class="footer-icon fab fa-facebook-f"></i>
-          <i class="footer-icon fab fa-instagram"></i>
-          <i class="footer-icon fas fa-envelope"></i>
-          <p>© Copyright 2020 PALLAS Entertainment</p>
-        </div>
-      </footer>
+      <div class="container-fluid">
+        <i class="footer-icon fab fa-twitter"></i>
+        <i class="footer-icon fab fa-facebook-f"></i>
+        <i class="footer-icon fab fa-instagram"></i>
+        <i class="footer-icon fas fa-envelope"></i>
+        <p>© Copyright 2020 PALLAS Entertainment</p>
+      </div>
+    </footer>
   </body>
 </html>
