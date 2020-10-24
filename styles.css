@@ -6,6 +6,11 @@ body{
 h2{
     font-weight: bold;
 }
+
+p{
+    color: #8f8f8f;
+}
+
 /**-----------------------------------Main Page-----------------------------------------------*/
 /*Section Styling*/
 .colored-section{
@@ -115,6 +120,21 @@ h2{
     width: 100px;
     border-radius: 100%;
     margin: 3% 3%;
+}
+
+/*-----------------------------------------------------*/
+/*Pricing Section*/
+#pricing{
+    padding: 50px;
+}
+
+.pricing-column{
+    padding: 3% 2%;
+}
+
+.price-text{
+    font-size: 2rem;
+    line-height: 1.5;
 }
 
 /*----------------------------------------------*/
