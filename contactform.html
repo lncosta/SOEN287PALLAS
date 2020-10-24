@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <!--SOEN 287 Group Project
+        Team 8 - PALLAS Entertainment
+        Team members:
+        Florian Charreau (26494889) 
+        Piyush Goyal(40106759) 
+        Aline Kurkdjian (40131528)
+        Joseph Mezzacappa(40134799)
+        Luiza Nogueira Costa (40124771)
+        Yi Heng Yan (40060587)
+    -->
+    
+
+    <head>
+        <title>PALLAS Entertainment</title>
+
+        <style type="text/css"> /*Temporary style only*/
+
+            body{
+                background-color: crimson;
+                margin: 5px;
+            }
+            nav {
+                border: 1px solid black;
+                width: 100%;
+                background-color: gold;
+            }
+
+            .navbar ol {
+                list-style-type: none;
+                padding-left: 0;
+            }
+
+            .navbar {
+                display: inline-block;
+            }
+
+            .navbar a::after {
+                display: inline-block;
+                color: #000;
+                content: '>';
+                font-size: 80%;
+                font-weight: bold;
+                padding: 0 3px;
+            }
+
+            header{
+                width: 100%;
+                font-size: 5em;
+                color: crimson;
+                background-color: black;
+                text-align: center;
+
+            }
+
+            form{
+                border: 5px dotted black;
+            }
+
+            div.socials{
+                border: 1px solid black;
+                width: 100%;
+                background-color: gold;
+            }
+
+            ol.socials{
+                list-style-type: none;
+                padding-left: 0;
+            }
+            .socials {
+                display: inline-block;
+            }
+        </style>
+
+        <script type="text/javascript">
+            function getQuote(){
+                var totalQuote = 0;
+
+                var eventType = document.getElementById("eventtypes").value;
+                var priceMultiplier = 1;
+                if(eventType == "intimate"){
+                    priceMultiplier = 1;
+                }
+                else if(eventType == "medium"){
+                    priceMultiplier = 2;
+                }
+                else if(eventType == "large"){
+                    priceMultiplier = 3;
+                }
+                else if(eventType == "public"){
+                    priceMultiplier = 4;
+                }
+                var performancesMultiplier = 5;
+                if (document.getElementById("abubbles").checked == true){
+                    performancesMultiplier+= 10;
+                }
+                if (document.getElementById("acontorsion").checked == true){
+                    performancesMultiplier+= 10;
+                }
+                if (document.getElementById("amagic").checked == true){
+                    performancesMultiplier+= 10;
+                }
+                if (document.getElementById("amusic").checked == true){
+                    performancesMultiplier+= 10;
+                }
+
+                totalQuote = priceMultiplier*performancesMultiplier;
+                if (document.getElementById("bgreeting").checked == true){
+                    totalQuote+= 100;
+                }
+                if (document.getElementById("bkids").checked == true){
+                    totalQuote+= 500;
+                }
+                if (document.getElementById("bmc").checked == true){
+                    totalQuote+= 500;
+                }
+
+                alert("The total quote for your event is estimated to be $"+ totalQuote+".00");
+               
+            }
+
+            function validateForm(){
+                if (document.getElementById("fname").value == ""){
+                    return false;
+                }
+                if (document.getElementById("lname").value == ""){
+                    return false;
+                }
+                if (document.getElementById("email").value == ""){
+                    return false;
+                }
+                if (document.getElementById("phone").value == ""){
+                    return false;
+                }
+                if (document.getElementById("eventdate").value == null){
+                    return false;
+                }
+                return true;
+            }
+
+            function reviewForm(){
+                if (validateForm()){
+                    getQuote();
+                }
+                else{
+                    alert("Please make sure that all form elements are filled adequately");
+                }
+            }
+        
+        </script>
+
+    </head>
+
+    <body>
+        <header>PALLAS ENTERTAINMENT</header>
+        <nav class="navbar">
+            <ol>
+                <li class="navbar"> <a href =""> Home </a></li>
+                <li class="navbar"> <a href =""> About Us </a></li>
+                <li class="navbar"> <a href =""> Performance Archive </a></li>
+                <li class="navbar"> <a href =""> Upcoming Performances </a></li>
+                <li class="navbar"> <a href =""> FAQ </a></li>
+                <li class="navbar"> <a href =""> Contact </a></li>
+            </ol>
+        </nav>
+    
+
+    <main>
+        <h1>Contact us!</h1>
+        <h2>Festival intermission act? Toddler birthday party? Hit us up and we will be there to entertain you!</h2>
+        <p>Fill in the form below for a quote estimation, or send us a message in one of our many channels.</p>
+
+        <div class ="quote">
+            <form action="">
+                <label>Name:</label>
+                <input type="text" id="fname" placeholder="First Name"/>
+                <input type="text" id="lname" placeholder="Last Name"/>
+                <br/>
+                <br/>
+                <label>Email Address:</label>
+                <input type="email" id="email" placeholder="email@address.com"/>
+                <br/>
+                <br/>
+                <label>Phone Number:</label>
+                <input type="number" id="phone" placeholder="123-456-7890"/>
+                <br/>
+                <br/>
+                <label>Event Date:</label> <!--Check if available-->
+                <input type="date" id="eventdate"/>
+                <br/>
+                <br/>
+                <label>Event Type:</label>
+                <select name="eventtypes" id="eventtypes">
+                    <option value="intimate">Intimate - birthdays, family celebrations, or less than 10 people</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                    <option value="public">Public</option>
+                </select>
+                <br/>
+                <br/>
+                <label>Budget:</label>
+                <input type="number" id="budget" min="1" step="any" placeholder="$$$.$$"/>
+                <br/>
+                <br/>
+                <label>Check which of our acts you want us to perform:</label> <!--Determine which performers to hire with algoritm-->
+                <br/>
+                <label><input type="checkbox" name="aoption1" id="abubbles" value="Blubbles"/> Blubble Blowing</label>
+                <br/>
+                <label><input type="checkbox" name="aoption2" id="acontorsion" value="Contorsion"/>Contorsion</label>
+                <br/>
+                <label><input type="checkbox" name="aoption3" id="amagic" value="Magic"/>Magic Show</label>
+                <br/>
+                <label><input type="checkbox" name="aoption4" id="amusic" value="Music"/>Musical Performance</label>
+                <br/>
+                <br/>
+                <label>Optional Services:</label>
+                <br/>
+                <label><input type="checkbox" name="option1" id="bgreeting" value="Personalized Greeting"/> Personalized Greeting </label>
+                <br/>
+                <label><input type="checkbox" name="option2" id="bkids" value="Kids Special Package"/> Kids Special Package</label>
+                <br/>
+                <label><input type="checkbox" name="option3" id="bmc" value="MC"/> MC - Master of Cerimonies</label>
+                <br/>
+                <br/>
+                <label>Additional Information:</label>
+                <br/>
+                <textarea id="addinfo" name="addinfo" rows=4 cols="50" placeholder="Please add any additional requests or considerations here"></textarea>
+                <br/>
+                <br/>
+                <button type="button" name="submitForm" onclick="reviewForm()">Request Quote </button>
+                <input type="reset">
+
+            </form>
+        </div>
+
+        <div class="socials">
+            <ol>
+                <li class="socials">Instagram</li>
+                <li class="socials">Twitter</li>
+                <li class="socials">Facebook</li>
+                <li class="socials">Email</li>
+                <li class="socials">Phone</li>
+            </ol>
+        </div>
+    </main>
+    <footer>
+        <p> PALLAS ENTERTAINMENT</p>
+    </footer>
+    </body>
+</html>
