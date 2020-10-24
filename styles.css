@@ -8,6 +8,11 @@ body{
     color: #fff;
 }
 
+.section-heading{
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
 /*Text*/
 .big-heading{ 
     font-size: 3.5rem;
@@ -16,16 +21,23 @@ body{
     margin-bottom: 50px;
 }
 
+h2{
+    font-weight: bold;
+}
+
+.container-fluid{
+    padding: 3% 7%;
+}
+
 /*Title Section*/
 #title{
-    padding: 3% 10%;
-    border: 1px solid black;
+    padding: 3% 7%;
     background-image: url(media/pattern.jpg);
 }
 
 .title-image{
     width: 500px;
-    padding: 0 0 18% 0;
+    padding: 0 0 5% 0;
 }
 
 @media (max-width: 1028px)
@@ -56,4 +68,28 @@ body{
 .nav-link{
     font-size: 1.2rem;
     font-family: "Montserrat";
+}
+
+/*Gathering Section*/
+#gathering ,#features{
+    background-color: #fff;
+    position: relative;
+    width: 100%;
+}
+
+.gathering-box ,.feature-box{
+    padding: 5%;
+}
+
+.gathering-icon ,.feature-icon{
+    color: #3797a4;
+    margin-bottom: 1rem;
+}
+
+.gathering-icon:hover , .feature-icon:hover{
+    color: #1f6f8b;
+}
+
+.gathering-title , .feature-title{
+    font-style: 1.5rem;
 }
