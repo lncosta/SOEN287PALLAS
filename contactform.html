@@ -92,17 +92,22 @@
                     priceMultiplier = 4;
                 }
                 var performancesMultiplier = 55;
+                var counter = 0;
                 if (document.getElementById("abubbles").checked == true){
                     performancesMultiplier+= 10;
+                    counter++;
                 }
                 if (document.getElementById("acontorsion").checked == true){
                     performancesMultiplier+= 10;
+                    counter++;
                 }
                 if (document.getElementById("amagic").checked == true){
                     performancesMultiplier+= 10;
+                    counter++;
                 }
                 if (document.getElementById("amusic").checked == true){
                     performancesMultiplier+= 10;
+                    counter++;
                 }
 
                 totalQuote = priceMultiplier*performancesMultiplier;
@@ -115,7 +120,10 @@
                 if (document.getElementById("bmc").checked == true){
                     totalQuote+= 500;
                 }
-
+                if(counter == 0){
+                    alert("Please select one of our performances before proceeding.");
+                }
+                else
                 alert("The total quote for your event is estimated to be $"+ totalQuote+".00");
                
             }
