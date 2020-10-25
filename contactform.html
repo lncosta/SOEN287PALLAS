@@ -13,66 +13,38 @@
     
 
     <head>
-        <title>PALLAS Entertainment</title>
-
-        <style type="text/css"> /*Temporary style only*/
-
-            body{
-                background-color: crimson;
-                margin: 5px;
-            }
-            nav {
-                border: 1px solid black;
-                width: 100%;
-                background-color: gold;
+        <link rel="stylesheet" href="styles.css">
+        <style type="text/css">
+        
+            main{
+                background-image: url(media/images/pattern2.jpg);
+                color: #fff;
+                padding: 20px;
             }
 
-            .navbar ol {
-                list-style-type: none;
-                padding-left: 0;
+            .colortext{
+                font-size: 2em;
+                color: lightcyan;
             }
 
-            .navbar {
-                display: inline-block;
+            .quote{
+                border: 5px solid whitesmoke;
+                text-align: left;
+                padding: 20px;
+                margin: 15px;
             }
 
-            .navbar a::after {
-                display: inline-block;
-                color: #000;
-                content: '>';
-                font-size: 80%;
-                font-weight: bold;
-                padding: 0 3px;
+            input{
+                border-radius: 10px;
+                border: 2px solid whitesmoke;
             }
 
-            header{
-                width: 100%;
-                font-size: 5em;
-                color: crimson;
-                background-color: black;
-                text-align: center;
-
+            .submitbutton{
+                border-radius: 10px;
+                border: 2px solid whitesmoke;
             }
-
-            form{
-                border: 5px dotted black;
-            }
-
-            div.socials{
-                border: 1px solid black;
-                width: 100%;
-                background-color: gold;
-            }
-
-            ol.socials{
-                list-style-type: none;
-                padding-left: 0;
-            }
-            .socials {
-                display: inline-block;
-            }
+        
         </style>
-
         <script type="text/javascript">
             function getQuote(){
                 var totalQuote = 0;
@@ -158,26 +130,94 @@
         
         </script>
 
+    <meta charset="utf-8" />
+
+    <!--Google Fonts-->
+    <!--Luckiest Guy || Montserrat-->
+    <link
+    href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@400;700;900&display=swap"
+    rel="stylesheet"
+    />
+
+    <!--Bootstrap-->
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+    crossorigin="anonymous"
+    />
+
+    <!--Manual CSS-->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!--Icons-->
+    <script
+    src="https://kit.fontawesome.com/ba7a137c00.js"
+    crossorigin="anonymous"
+    ></script>
+
+    <!--Javascript and JQuery-->
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+    ></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+    ></script>
+    <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"
+    ></script>
+
     </head>
 
     <body>
-        <header>PALLAS ENTERTAINMENT</header>
-        <nav class="navbar">
-            <ol>
-                <li class="navbar"> <a href =""> Home </a></li>
-                <li class="navbar"> <a href =""> About Us </a></li>
-                <li class="navbar"> <a href =""> Performance Archive </a></li>
-                <li class="navbar"> <a href =""> Upcoming Performances </a></li>
-                <li class="navbar"> <a href =""> FAQ </a></li>
-                <li class="navbar"> <a href =""> Contact </a></li>
-            </ol>
-        </nav>
+        <section class="colored-section" id="title">
+            <div class="container-fluid">
+              <!--NavBar-->
+              <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="">Pallas</a>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Upcoming Performances</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Contact + Booking</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">Performance Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="">FAQ</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+          </section>
     
 
     <main>
         <h1>Contact us!</h1>
-        <h2>Festival intermission act? Toddler birthday party? Hit us up and we will be there to entertain you!</h2>
-        <p>Fill in the form below for a quote estimation, or send us a message in one of our many channels.</p>
+        <p class="colortext">Fill in the form below for a quote estimation, or send us a message in one of our many channels.</p>
 
         <div class ="quote">
             <form action="">
@@ -236,24 +276,23 @@
                 <textarea id="addinfo" name="addinfo" rows=4 cols="50" placeholder="Please add any additional requests or considerations here"></textarea>
                 <br/>
                 <br/>
-                <button type="button" name="submitForm" onclick="reviewForm()">Request Quote </button>
+                <button type="button" name="submitForm" onclick="reviewForm()" class="submitbutton">Request Quote </button>
                 <input type="reset">
 
             </form>
+            <br/>
+            <br/>
         </div>
 
-        <div class="socials">
-            <ol>
-                <li class="socials">Instagram</li>
-                <li class="socials">Twitter</li>
-                <li class="socials">Facebook</li>
-                <li class="socials">Email</li>
-                <li class="socials">Phone</li>
-            </ol>
-        </div>
     </main>
-    <footer>
-        <p> PALLAS ENTERTAINMENT</p>
-    </footer>
+    <footer class="white-section" id="footer">
+        <div class="container-fluid">
+          <i class="footer-icon fab fa-twitter"></i>
+          <i class="footer-icon fab fa-facebook-f"></i>
+          <i class="footer-icon fab fa-instagram"></i>
+          <i class="footer-icon fas fa-envelope"></i>
+          <p>© Copyright 2020 PALLAS Entertainment</p>
+        </div>
+      </footer>
     </body>
 </html>
