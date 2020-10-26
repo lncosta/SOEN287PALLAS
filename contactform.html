@@ -13,7 +13,6 @@
     
 
     <head>
-        <link rel="stylesheet" href="styles.css">
         <style type="text/css">
         
             main{
@@ -43,7 +42,18 @@
                 border-radius: 10px;
                 border: 2px solid whitesmoke;
             }
-        
+
+            .close{
+                text-align: right;
+            }
+
+            .modal-title{
+                color: black;
+            }
+
+            td.tdclosebutton{
+                margin-left: 2em;
+            }
         </style>
         <script type="text/javascript">
             function getQuote(){
@@ -95,9 +105,11 @@
                 if(counter == 0){
                     alert("Please select one of our performances before proceeding.");
                 }
-                else
-                alert("The total quote for your event is estimated to be $"+ totalQuote+".00");
-               
+                else{
+                    //alert("The total quote for your event is estimated to be $"+ totalQuote+".00");
+                    document.getElementById("quoteRequestResult").innerHTML = "The total quote for your event is estimated to be $"+ totalQuote+".00";
+                    $('#myModal').modal('show'); 
+                }
             }
 
             function validateForm(){
@@ -124,10 +136,9 @@
                     getQuote();
                 }
                 else{
-                    alert("Please make sure that all form elements are filled adequately");
+                    alert("Please make sure that all form elements are filled adequately.");
                 }
             }
-        
         </script>
 
     <meta charset="utf-8" />
@@ -180,7 +191,7 @@
             <div class="container-fluid">
               <!--NavBar-->
               <nav class="navbar navbar-expand-lg navbar-dark">
-                <a class="navbar-brand" href="">Pallas</a>
+                <a class="navbar-brand" href="mainPage.html">Pallas</a>
                 <button
                   class="navbar-toggler"
                   type="button"
@@ -195,19 +206,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="">Upcoming Performances</a>
+                      <a class="nav-link" href="upcomingevents.html">Upcoming Performances</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="">Contact + Booking</a>
+                      <a class="nav-link" href="contactform.html">Contact + Booking</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="">About</a>
+                      <a class="nav-link" href="aboutpage.html">About</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="">Performance Gallery</a>
+                      <a class="nav-link" href="performancearchive.html">Performance Gallery</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="">FAQ</a>
+                      <a class="nav-link" href="faq.html">FAQ</a>
                     </li>
                   </ul>
                 </div>
@@ -253,13 +264,13 @@
                 <br/>
                 <label>Check which of our acts you want us to perform:</label> <!--Determine which performers to hire with algoritm-->
                 <br/>
-                <label><input type="checkbox" name="aoption1" id="abubbles" value="Blubbles"/> Blubble Blowing</label>
+                <label><input type="checkbox" name="aoption1" id="abubbles" value="Bubbles"/> Bubble Blowing</label>
                 <br/>
-                <label><input type="checkbox" name="aoption2" id="acontorsion" value="Contorsion"/>Contorsion</label>
+                <label><input type="checkbox" name="aoption2" id="acontorsion" value="Contorsion"/> Contorsion</label>
                 <br/>
-                <label><input type="checkbox" name="aoption3" id="amagic" value="Magic"/>Magic Show</label>
+                <label><input type="checkbox" name="aoption3" id="amagic" value="Magic"/> Magic Show</label>
                 <br/>
-                <label><input type="checkbox" name="aoption4" id="amusic" value="Music"/>Musical Performance</label>
+                <label><input type="checkbox" name="aoption4" id="amusic" value="Music"/> Musical Performance</label>
                 <br/>
                 <br/>
                 <label>Optional Services:</label>
@@ -283,8 +294,36 @@
             <br/>
             <br/>
         </div>
-
-    </main>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <table>
+                            <tr>
+                                <td>Quote Request:</td>
+                                <td class="tdclosebutton"><button type="button" class="close" data-dismiss="modal">&times;</button></td>
+                            </tr>
+                        </table>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                <p id="quoteRequestResult">Your estimated quote is: .</p>
+                <p>Book now and receive a 10% discount! Otherwise, we will get back to you in 5 business days.</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" name = "submitForm" class="btn btn-default" onclick="">Book Now!</button>
+                <button type="button" name = "submitForm" class="btn btn-default" onclick="" data-dismiss="modal">Request Quota via Email and Close.</button>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+  
+   </main>
     <footer class="white-section" id="footer">
         <div class="container-fluid">
           <i class="footer-icon fab fa-twitter"></i>
