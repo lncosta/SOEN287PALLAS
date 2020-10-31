@@ -26,7 +26,7 @@ div{
 }
 .sales{
     
-    background: url("Concert.jpg") center/cover no-repeat; /* center/cover starts picture at center */
+    background: url("/media/images/Concert.jpg") center/cover no-repeat; /* center/cover starts picture at center */
     display :flex;
     align-items: center; /*Vertical*/
     justify-content: center;
