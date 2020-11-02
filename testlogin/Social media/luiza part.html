@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <!--SOEN 287 Group Project
+        Team 8 - PALLAS Entertainment
+        Team members:
+        Florian Charreau (26494889) 
+        Piyush Goyal(40106759) 
+        Aline Kurkdjian (40131528)
+        Joseph Mezzacappa(40134799)
+        Luiza Nogueira Costa (40124771)
+        Yi Heng Yan (40060587)
+    -->
+    
+
+    <head>
+        <title>PALLAS Entertainment</title>
+
+        <style type="text/css"> /*Temporary style only*/
+
+            body{
+                background-color: crimson;
+                margin: 5px;
+            }
+            nav {
+                border: 1px solid black;
+                width: 100%;
+                background-color: gold;
+            }
+
+            .navbar ol {
+                list-style-type: none;
+                padding-left: 0;
+            }
+
+            .navbar {
+                display: inline-block;
+            }
+
+            .navbar a::after {
+                display: inline-block;
+                color: #000;
+                content: '>';
+                font-size: 80%;
+                font-weight: bold;
+                padding: 0 3px;
+            }
+
+            header{
+                width: 100%;
+                font-size: 5em;
+                color: crimson;
+                background-color: black;
+                text-align: center;
+
+            }
+
+            form{
+                border: 5px dotted black;
+            }
+
+            table{
+
+                background-color: white;
+
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <header>PALLAS ENTERTAINMENT</header>
+        <nav class="navbar">
+            <ol>
+                <li class="navbar"> <a href =""> Home </a></li>
+                <li class="navbar"> <a href =""> About Us </a></li>
+                <li class="navbar"> <a href =""> Performance Archive </a></li>
+                <li class="navbar"> <a href =""> Upcoming Performances </a></li>
+                <li class="navbar"> <a href =""> FAQ </a></li>
+                <li class="navbar"> <a href =""> Contact </a></li>
+            </ol>
+        </nav>
+    </body>
+
+    <main>
+        <h1>Contact us!</h1>
+        <h2>Festival intermission act? Toddler birthday party? Hit us up and we will be there to entertain you!</h2>
+        <p>Fill in the form below for a quote estimation, or send us a message in one of our many channels.</p>
+
+        <div class ="quote">
+            <form action="">
+                <label>Name:</label>
+                <input type="text" id="fname" placeholder="First Name">
+                <input type="text" id="lname" placeholder="Last Name">
+                <br>
+                <br>
+                <label>Email Address:</label>
+                <input type="email" id="email" placeholder="email@address.com">
+                <br>
+                <br>
+                <label>Phone Number:</label>
+                <input type="number" id="phone" placeholder="123-456-7890">
+                <br>
+                <br>
+                <label>Event Date:</label> <!--Check if available-->
+                <input type="date" id="eventdate">
+                <br>
+                <br>
+                <label>Event Type:</label>
+                <select name="eventtypes" id="eventtypes">
+                    <option value="intimate">Intimate - birthdays, family celebrations, or less than 10 people</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                    <option value="public">Public</option>
+                </select>
+                <br>
+                <br>
+                <label>Budget:</label>
+                <input type="number" id="budget" min="1" step="any" placeholder="$$$.$$">
+                <br>
+                <br>
+                <label>Check which of our acts you want us to perform:</label> <!--Determine which performers to hire with algoritm-->
+                <br>
+                <label><input type="checkbox" name="aoption1" value="Blubbles"> Blubble Blowing</label>
+                <br>
+                <label><input type="checkbox" name="aoption1" value="Contorsion">Contorsion</label>
+                <br>
+                <label><input type="checkbox" name="aoption1" value="Magic">Magic Show</label>
+                <br>
+                <label><input type="checkbox" name="aoption1" value="Music">Musical Performance</label>
+                <br>
+                <br>
+                <label>Optional Services:</label>
+                <br>
+                <label><input type="checkbox" name="option1" value="Personalized Greeting"> Personalized Greeting </label>
+                <br>
+                <label><input type="checkbox" name="option2" value="Kids Special Package"> Kids Special Package</label>
+                <br>
+                <label><input type="checkbox" name="option3" value="MC"> MC - Master of Cerimonies</label>
+                <br>
+                <br>
+                <label>Additional Information:</label>
+                <br>
+                <textarea id="addinfo" name="addinfo" rows=4 cols="50" placeholder="Please add any additional requests or considerations here"></textarea>
+                <br>
+                <br>
+                <input type="submit">
+                <input type="reset">
+
+
+            </form>
+        </div>
+        <div class="socials">
+
+        </div>
+
+        <footer>
+            <p>PALLAS Entertainment Inc.</p>
+        </footer>
+    </main>
+
+    <footer>
+
+            <table>
+        
+        <td><a href="https://www.instagram.com/the_soap_bubble_juggler/">
+ <img src="instagram.JPG" />
+</a></td>
+        <td><a href="https://www.linkedin.com/in/fcharreau-bubble-entertainment?challengeId=AQGcWQfHEUs4xQAAAXVHWDEgKbWcTe9d16vMIKIOfQnSzKaRtsz8NmpNdg0TdAJ-hS4m-PbXToKINiiNyrS-NrBNSi8ZJHuEuQ&submissionId=833e2168-e1c7-3f16-86ae-8f9d9798b762">
+ <img src="linkedin.PNG" />
+</a></td>
+        <td><a href="https://www.pinterest.fr/floriancharreau/">
+ <img src="pinterest.PNG" />
+</a></td>
+        <td><a href="https://twitter.com/BubbleMoment?lang=fr">
+ <img src="twitter.PNG" />
+</a></td>
+        <td><a href="https://www.facebook.com/BubbleMoment/">
+ <img src="facebook.PNG" />
+</a></td>
+        <td><a href="https://www.youtube.com/channel/UCkEkEfHag5eeGTwm4ecKpVQ/videos?view_as=subscriber">
+ <img src="youtube.PNG" />
+</a>
+</td>
+
+
+    </table>
+
+    </footer>
+</html>

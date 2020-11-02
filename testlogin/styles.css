@@ -1,0 +1,146 @@
+body{
+    text-align: center;
+    font-family: "Montserrat";
+}
+
+h2{
+    font-weight: bold;
+}
+
+p{
+    color: #8f8f8f;
+}
+
+/**-----------------------------------Main Page-----------------------------------------------*/
+/*Section Styling*/
+.colored-section{
+    background-image: url(media/images/pattern2.jpg);
+    color: #fff;
+}
+
+.section-heading{
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+/*------------------------------*/
+/*Text*/
+.big-heading{
+    font-size: 3.5rem;
+    line-height: 1.5;
+    font-weight: 900;
+    margin-bottom: 50px;
+}
+
+.book-btn{
+    margin: 5% 3% 5% 0;
+}
+
+.container-fluid{
+    padding: 3% 7%;
+}
+
+/*----------------------------------*/
+/*Title Section*/
+#title{
+    padding: 3% 7%;
+    background-image: url(media/images/pattern.jpg);
+}
+
+.title-image{
+    width: 500px;
+    padding: 0 0 5% 0;
+}
+
+@media (max-width: 1028px)
+{
+    .title-image{
+        position: static;
+    }
+
+    #title{
+        text-align: center;
+    }
+}
+
+/*--------------------------------------------*/
+/*Navbar*/
+.navbar{
+    padding: 0 0 4.5rem 0;
+}
+
+.navbar-brand{
+    font-family: 'Luckiest Guy';
+    font-size: 2.5rem;
+}
+
+.nav-item{
+    padding: 0 10px;
+}
+
+.nav-link{
+    font-size: 1.2rem;
+    font-family: "Montserrat";
+}
+
+/*------------------------------------------*/
+/*Gathering Section*/
+#gathering ,#features{
+    background-color: #fff;
+    position: relative;
+    width: 100%;
+}
+
+.gathering-box ,.feature-box{
+    padding: 5%;
+}
+
+.gathering-icon ,.feature-icon{
+    color: #3797a4;
+    margin-bottom: 1rem;
+}
+
+.gathering-icon:hover , .feature-icon:hover{
+    color: #1f6f8b;
+}
+
+.gathering-title , .feature-title{
+    font-style: 1.5rem;
+    font-weight: bold;
+}
+
+/*---------------------------------------------------*/
+/*Review Section*/
+.review-text{
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.review-image{
+    width: 100px;
+    border-radius: 100%;
+    margin: 3% 3%;
+}
+
+/*-----------------------------------------------------*/
+/*Pricing Section*/
+#pricing{
+    padding: 50px;
+}
+
+.pricing-column{
+    padding: 3% 2%;
+}
+
+.price-text{
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+/*----------------------------------------------*/
+/*Footer*/
+.footer-icon{
+    margin: 20px 10px;
+}
+
+
