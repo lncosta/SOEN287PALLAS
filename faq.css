@@ -1,0 +1,60 @@
+body{
+    background: #92140C;
+}
+
+.box{
+    width:640px;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 1px 2px 4px rgba(0,0,0,.3);
+}
+.box .heading{
+    background: #E3B505;
+    border-radius:7px 7px 0px 0px;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    font-family: "Rubik";
+}
+.title{
+    padding: 0px 20px 20px;
+}
+
+::-webkit-details-marker{
+    float: left;
+    margin-top: 3px;
+}
+
+details{
+    background: #f6f6f6;
+    padding: 10px 20px;
+    border-radius: 7px;
+    margin-top:20px;
+    font-family:"Rubik";
+    font-size:14px;
+    letter-spacing: 1px;
+}
+details summary{
+    outline: none;
+}
+
+.menu{
+    width:640px;
+    margin: 30px auto;
+    font-size:20px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    font-family: "rubik";
+    color:black;
+    letter-spacing:1px;
+    text-align:center;
+}
+
+h1{
+    font-size:50px;
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    text-shadow: black;
+    
+}
