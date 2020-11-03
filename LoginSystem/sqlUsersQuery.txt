@@ -1,0 +1,10 @@
+CREATE TABLE `users` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `email` varchar(50) NOT NULL,
+ `password` varchar(255) NOT NULL,
+ `fname` varchar(50) NOT NULL,
+ `lname` varchar(50) NOT NULL,
+ `created_at` datetime DEFAULT current_timestamp(),
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `username` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4
