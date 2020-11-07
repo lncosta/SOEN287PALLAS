@@ -86,7 +86,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <a class="nav-link" href="upcomingevents.html">Upcoming Performances</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="contactform.html">Contact + Booking</a>
+                        <a class="nav-link" href="contactform.php">Contact + Booking</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="aboutpage.html">About</a>
@@ -96,6 +96,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="faq.html">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="userpage.php">User's Page</a>
                         </li>
                     </ul>
                     </div>
@@ -110,7 +113,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <h2>Your Reviews:</h2>
     </div>  
     <p>
-        <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
     </p>
 </body>
