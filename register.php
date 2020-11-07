@@ -164,7 +164,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <section class="colored-section" id="title">
                 <div class="container-fluid">
                 <!--NavBar-->
-                <nav class="navbar navbar-expand-lg navbar-dark">
+                 <nav class="navbar navbar-expand-lg navbar-dark">
                     <a class="navbar-brand" href="mainPage.html">Pallas</a>
                     <button
                     class="navbar-toggler"
@@ -183,7 +183,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <a class="nav-link" href="upcomingevents.html">Upcoming Performances</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="contactform.html">Contact + Booking</a>
+                        <a class="nav-link" href="contactform.php">Contact + Booking</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="aboutpage.html">About</a>
@@ -194,8 +194,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <li class="nav-item">
                         <a class="nav-link" href="faq.html">FAQ</a>
                         </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="userpage.php">User's Page</a>
+                        </li>
                     </ul>
-                    </div>
+                   </div>
                 </nav>
         </section>
     <main>
