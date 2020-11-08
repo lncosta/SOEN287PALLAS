@@ -121,10 +121,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="upcomingevents.html">Upcoming Performances</a>
+                  <a class="nav-link" href="ticketsales.php">Upcoming Performances</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contactform.html">Contact + Booking</a>
+                  <a class="nav-link" href="contactform.php">Contact + Booking</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="aboutpage.html">About</a>
@@ -134,6 +134,9 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="faq.html">FAQ</a>
+                </li>
+                <li class="nav-item">
+                      <a class="nav-link" href="userpage.php">User's Page</a>
                 </li>
               </ul>
             </div>
@@ -230,7 +233,16 @@
           </article>
         </div>
     </section>
-      
+      <!-- Footer -->
+    <footer class="white-section" id="footer">
+      <div class="container-fluid">
+        <i class="footer-icon fab fa-twitter"></i>
+        <i class="footer-icon fab fa-facebook-f"></i>
+        <i class="footer-icon fab fa-instagram"></i>
+        <i class="footer-icon fas fa-envelope"></i>
+        <p>© Copyright 2020 PALLAS Entertainment</p>
+      </div>
+    </footer>
 </body>
 
 
