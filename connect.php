@@ -2,7 +2,7 @@
 
 $user = 'root';
 $pass = '';
-$db = 'upcoming performances';
+$db = 'demo';
 
 /*$db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");*/
 
