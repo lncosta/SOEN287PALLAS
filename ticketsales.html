@@ -43,9 +43,53 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"
     ></script>
+
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        
+        /* Modal Content */
+        .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+        }
+        
+        /* The Close Button */
+        .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        </style>
 </head>
 
 <body>
+   
     <section class="colored-section" id="title">
         <div class="container-fluid">
           <!--NavBar-->
@@ -83,6 +127,134 @@
             </div>
           </nav>
       </section>
+
+      <h2>Modal Example</h2>
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>  <h1>Express Checkout</h1>
+    <form>
+        <table>
+        <tr>
+            <th colspan  = 2>Billing Address</th>
+            <th>Payment</th>
+        </tr>
+        <tr>
+            <td><label>First name</label>
+            <br> <input class = "card" type ="text" name = "first">
+            </td>
+            <td>Last name
+            <br> <input type ="text" name = "last">
+            </td>
+            <form>
+                <td>
+                    <br>
+                  <div class = border>
+                    <label>
+                    <input class = "center" type = "radio" name = "type" >
+                    <br>
+                    <div class = "center">
+                        Credit Card
+                    </div>
+                    </label>
+                </div>
+                    </td>
+                
+                    <td style = "width:165px;">
+                        <br>
+                        <div class = "border">
+                        <label>
+                            <input class = "center" type = "radio" name = "type">
+                            
+                            <div class = "center"> Paypal</div>
+                        </label>
+                    </div>
+                    </td>
+            </form>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label>Company name</label>
+            </br>
+                <input type = "text" name = "Company">
+            </td>
+            <td colspan = "2">
+                <fieldset class = "card">
+                            <legend>Card Number</legend>
+                            <input class = "none" type = 'text' name = cardNum>
+                </fieldset>
+            </td>
+        </tr>
+        <tr>
+            <td colspan = 2>
+                <label>Country</label>
+            </br>
+                <select name = "country">
+                    <option value = "Argentina">Argentina</option>
+                    <option value = "Canada">Canada</option>
+                    <option value = "United States">United States</option>
+                </select>
+            </td>
+            <td colspan = 2>
+                <fieldset class = "card">
+                    <div class = "user">
+                    <input class= "none" type = "text" name = "cardName" placeholder="Cardholder Name">
+                    <!--REMEMBER TO CHANGE-->
+                </div>
+                </fieldset>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan = "2">
+                <label>Street Address</label>
+                <br>
+                <input type = "text" name = "street" placeholder = "House number and street name">
+            </td>
+            <td>
+                <div class = "exp">
+                    <input class="exp" type = "type" name = expiration placeholder="Expiration Date" onfocus = "(this.type = 'date')">
+                </div>
+            </td>
+            <td>
+                <div class = "exp">
+                    <input class = "exp" type = "text" name = "CVV" placeholder = "CVV" maxlength="3">
+                </div>
+            </td>
+        </tr>
+        <tr>
+       
+            <td>
+            <label>Town/City</label>
+            <br>
+            <input class = "two" type = "text" name = "city">
+        </td>
+        <td>
+            <label>Postal Code</label>
+            <br>
+            <input type = "text" name = "postal">
+         </td>
+
+        </tr>
+        </table>
+    
+    </table>
+        
+            
+
+
+           
+    </form></p>
+  </div>
+
+</div>
 <section class = "artists">
         <div><h2 class = "OurArtists">Our Performers</h2></div>
         <div class = "products-grid">
@@ -128,6 +300,33 @@
               <h3>Steven - Musician</h3>
           </article>
         </div>
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+            
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+            </script>
     </section>
       
 </body>
