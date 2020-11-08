@@ -1,0 +1,93 @@
+select{
+    width: 360px;
+}
+th{
+    text-align: left;
+}
+input{
+    border-radius: 6px;
+    height: 30px;
+    font-size: 20px;
+    border-color: rgba(224, 224, 224, 0.829);
+}
+
+input:hover{
+    border-color: rgb(60, 126, 250);
+}
+table{
+    border-spacing: 10px;
+}
+select{
+    border-width: 2px;
+    height:30px;
+    border-color: rgb(214, 214, 214); 
+}
+select:hover{
+    border-color: rgb(64, 147, 241);
+}
+input.center{
+    margin-left:42%;
+    width: 15px;
+    
+}
+div.center{
+    text-align: center;
+}
+div.border{
+    border: 2px solid;
+    border-radius: 8px;
+    border-color: rgb(214, 214, 214);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+div.exp{
+    border: 2px solid;
+    border-radius: 8px;
+    border-color: rgb(214, 214, 214);
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;;
+    width: 150px;
+}
+div.user{
+    background-image: url("user.png");
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+   
+}
+div:hover{
+    border-color: rgb(64, 147, 241);
+}
+fieldset.card{
+    border: 2px solid rgb(214, 214, 214);
+    border-radius: 8px;
+    height: 30px;
+    padding-bottom: 18px;
+    width: 300px;
+}
+fieldset.card:hover{
+    border-color: rgb(64, 147, 241);
+}
+input.none{
+    border: none;
+    font-size: 20px;
+    height:150%;
+    margin-bottom: 20px;
+    width: 300px;
+}
+input.exp{
+    border: none;
+    font-size: 15px;
+    height: 25px;
+    width: 150px;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+
+
+
+
