@@ -1,4 +1,3 @@
-
 div{
     display: block;
 }
@@ -90,6 +89,17 @@ margin-bottom: 1em;
 article{
     text-align: center;
 }
+
+table{
+
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    width:600px; 
+    line-height:40px;
+
+}
+
 .more-info{
     opacity:0;
     text-align: left;
@@ -109,6 +119,8 @@ opacity:1;
 /*---------------End Products-------------*/
 
 /*---------------Start of Cart------------*/
+
+
 
 
 
