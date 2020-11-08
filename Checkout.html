@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href = "Fancy.css"/>
+    </head>
+
+    <body>
+        <h1>Express Checkout</h1>
+    <form>
+        <table>
+        <tr>
+            <th colspan  = 2>Billing Address</th>
+            <th>Payment</th>
+        </tr>
+        <tr>
+            <td><label>First name</label>
+            <br> <input class = "card" type ="text" name = "first">
+            </td>
+            <td>Last name
+            <br> <input type ="text" name = "last">
+            </td>
+            <form>
+                <td>
+                    <br>
+                  <div class = border>
+                    <label>
+                    <input class = "center" type = "radio" name = "type" >
+                    <br>
+                    <div class = "center">
+                        Credit Card
+                    </div>
+                    </label>
+                </div>
+                    </td>
+                
+                    <td style = "width:165px;">
+                        <br>
+                        <div class = "border">
+                        <label>
+                            <input class = "center" type = "radio" name = "type">
+                            
+                            <div class = "center"> Paypal</div>
+                        </label>
+                    </div>
+                    </td>
+            </form>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label>Company name</label>
+            </br>
+                <input type = "text" name = "Company">
+            </td>
+            <td colspan = "2">
+                <fieldset class = "card">
+                            <legend>Card Number</legend>
+                            <input class = "none" type = 'text' name = cardNum>
+                </fieldset>
+            </td>
+        </tr>
+        <tr>
+            <td colspan = 2>
+                <label>Country</label>
+            </br>
+                <select name = "country">
+                    <option value = "Argentina">Argentina</option>
+                    <option value = "Canada">Canada</option>
+                    <option value = "United States">United States</option>
+                </select>
+            </td>
+            <td colspan = 2>
+                <fieldset class = "card">
+                    <div class = "user">
+                    <input class= "none" type = "text" name = "cardName" placeholder="Cardholder Name">
+                    <!--REMEMBER TO CHANGE-->
+                </div>
+                </fieldset>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan = "2">
+                <label>Street Address</label>
+                <br>
+                <input type = "text" name = "street" placeholder = "House number and street name">
+            </td>
+            <td>
+                <div class = "exp">
+                    <input class="exp" type = "type" name = expiration placeholder="Expiration Date" onfocus = "(this.type = 'date')">
+                </div>
+            </td>
+            <td>
+                <div class = "exp">
+                    <input class = "exp" type = "text" name = "CVV" placeholder = "CVV" maxlength="3">
+                </div>
+            </td>
+        </tr>
+        <tr>
+       
+            <td>
+            <label>Town/City</label>
+            <br>
+            <input class = "two" type = "text" name = "city">
+        </td>
+        <td>
+            <label>Postal Code</label>
+            <br>
+            <input type = "text" name = "postal">
+         </td>
+
+        </tr>
+        </table>
+    
+    </table>
+        
+            
+
+
+           
+    </form>
+
+    </body>
+</html>
