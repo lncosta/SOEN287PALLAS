@@ -1,146 +1,115 @@
-body{
+
+div{
+    display: block;
+}
+.banner{
     text-align: center;
-    font-family: "Montserrat";
-}
+    background-color: lightgrey;
+    opacity: 0.7;
+    padding: 2em;
 
-h2{
+}
+h1{
+    display: block; /* Will put on its own line and keep together. Inline: Keeps with text and splits. Inline Block: in etxt but doesnt split if 2 words. */
+   /* margin-block-start: 0.5rem;
+    margin-inline-start: 0rem;
+    margin-inline-end: 0.5rem;
+    margin-block-end: 0rem; /*These tell it when to stop/start inline */
     font-weight: bold;
+
 }
-
-p{
-    color: #8f8f8f;
+h3{
+    text-align: center;
 }
-
-/**-----------------------------------Main Page-----------------------------------------------*/
-/*Section Styling*/
-.colored-section{
-    background-image: url(media/images/pattern2.jpg);
-    color: #fff;
+h1.title{
+text-align: center;
+font-size: 3em;
+text-transform: uppercase;
+margin-bottom: 1em;
 }
-
-.section-heading{
-    font-size: 3rem;
-    line-height: 1.5;
+.banButtonL{
+    padding: 1em;
+    text-transform: uppercase;
+    margin-right: 5em;
 }
-
-/*------------------------------*/
-/*Text*/
-.big-heading{
-    font-size: 3.5rem;
-    line-height: 1.5;
-    font-weight: 900;
-    margin-bottom: 50px;
+.banButtonR{
+    padding: 1em 3em;
+    text-transform: uppercase;
+    margin-left: 3em;
 }
-
-.book-btn{
-    margin: 5% 3% 5% 0;
+.artists{
+    padding: 1em;
 }
+.OurArtists{
+    text-align: center;
+    margin-bottom: 2em;
+    text-transform: uppercase;
+    font-size: 2em;
 
-.container-fluid{
-    padding: 3% 7%;
 }
-
-/*----------------------------------*/
-/*Title Section*/
-#title{
-    padding: 3% 7%;
-    background-image: url(media/images/pattern.jpg);
-}
-
-.title-image{
-    width: 500px;
-    padding: 0 0 5% 0;
-}
-
-@media (max-width: 1028px)
-{
-    .title-image{
-        position: static;
-    }
-
-    #title{
-        text-align: center;
-    }
-}
-
-/*--------------------------------------------*/
-/*Navbar*/
-.navbar{
-    padding: 0 0 4.5rem 0;
-}
-
-.navbar-brand{
-    font-family: 'Luckiest Guy';
-    font-size: 2.5rem;
-}
-
-.nav-item{
-    padding: 0 10px;
-}
-
-.nav-link{
-    font-size: 1.2rem;
-    font-family: "Montserrat";
-}
-
-/*------------------------------------------*/
-/*Gathering Section*/
-#gathering ,#features{
-    background-color: #fff;
-    position: relative;
+.ArtistImages{
+    text-align: center;
+  display: block ;
     width: 100%;
+    height: 100%;
+    min-height: 350px;
+}
+.image{
+    position:relative;
+    overflow: hidden;
+}
+.image:hover{
+    
+
+    transition: var(--trans);  
+}
+.maps{
+    position: absolute;
+    bottom:0;
+    left: 0;
+    font-size: 0;
 }
 
-.gathering-box ,.feature-box{
-    padding: 5%;
+.products-grid{
+    width: 1000px;
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px,auto));
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+}
+*{ /* All elements */
+    box-sizing: border-box; /* Includes padding, border and everything in width, height! unlike content-box */
+    margin:0;
+    padding:0;
+}
+:root{
+    --trans: all 0.3s linear; /* all means width & height, 0.3s, linear animation time */
+}
+article{
+    text-align: center;
+}
+.more-info{
+    opacity:0;
+    text-align: left;
+    width: 100%;
+    height:100%;
+    position:absolute;
+    color: white;
+    left: 0;
+    top:0;
 }
 
-.gathering-icon ,.feature-icon{
-    color: #3797a4;
-    margin-bottom: 1rem;
+.more-info:hover{
+opacity:1;
 }
 
-.gathering-icon:hover , .feature-icon:hover{
-    color: #1f6f8b;
-}
 
-.gathering-title , .feature-title{
-    font-style: 1.5rem;
-    font-weight: bold;
-}
+/*---------------End Products-------------*/
 
-/*---------------------------------------------------*/
-/*Review Section*/
-.review-text{
-    font-size: 1.5rem;
-    line-height: 1.5;
-}
+/*---------------Start of Cart------------*/
 
-.review-image{
-    width: 100px;
-    border-radius: 100%;
-    margin: 3% 3%;
-}
 
-/*-----------------------------------------------------*/
-/*Pricing Section*/
-#pricing{
-    padding: 50px;
-}
-
-.pricing-column{
-    padding: 3% 2%;
-}
-
-.price-text{
-    font-size: 2rem;
-    line-height: 1.5;
-}
-
-/*----------------------------------------------*/
-/*Footer*/
-.footer-icon{
-    margin: 20px 10px;
-}
 
 
