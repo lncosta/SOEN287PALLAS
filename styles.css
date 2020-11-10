@@ -1,6 +1,7 @@
 body{
     text-align: center;
     font-family: "Montserrat";
+    margin:0px;
 }
 
 h2{
@@ -83,6 +84,59 @@ p{
     font-family: "Montserrat";
 }
 
+/*New nav bar*/
+
+.navbarsection{
+    background-image: url(media/images/pattern.jpg);
+    margin: 0;
+    overflow: hidden;
+    min-height: 150px;
+    max-height: 150px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+ul.navigation {
+    list-style-type:none;
+    display: flex;
+    top: 0px;
+    margin: 0 auto;
+    background-image: url(media/images/pattern.jpg);
+}
+li.item {
+    flex: 1;
+    margin: 0 auto;
+    padding: 40px;
+    
+}
+li.item a {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    color: #fff;
+    text-decoration: none;
+   
+}
+li:hover a {
+    color: rgb(168, 222, 243);
+}
+main {
+    padding-top: 0px;
+}
+
+
+@media (max-width: 979px) {
+    .navbarsection{
+        max-height: none;
+    }
+    ul.navigation{
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: left; /* If you want the text to be left-aligned on small screens */
+    }
+}
+
+
 /*------------------------------------------*/
 /*Gathering Section*/
 #gathering ,#features{
@@ -143,4 +197,83 @@ p{
     margin: 20px 10px;
 }
 
+/*Modal*/
 
+.modal-div {
+    display: none; /* Hidden by default */
+    width: 100%; 
+    height: 100%; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    overflow: auto; 
+    background-color: rgb(0, 0, 0); 
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5px auto;
+    padding: 10px;
+    border: 5px solid #888;
+    border-radius: 5px;
+    width: 100%; 
+  }
+  
+  /* The Close Button */
+  .close {
+    color: rgb(231, 54, 54);
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Modal Header */
+  .modal-header {
+    padding: 2px 16px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(30, 84, 105);
+  }
+  
+  /* Modal Body */
+  .modal-body {
+      padding: 2px 16px;
+      color: black;
+  }
+
+    .modal-body p{
+        color: black;
+    }
+  
+  /* Modal Footer */
+  .modal-footer {
+    height: 50px;
+    padding: 10px;
+    color: rgb(30, 84, 105);
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    width: 50%;
+    animation-name: animate;
+    animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @keyframes animate {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
