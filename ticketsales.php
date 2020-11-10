@@ -12,7 +12,6 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel = "stylesheet" href = "Sales.css">
     <!--Google Fonts-->
     <!--Luckiest Guy || Montserrat-->
     <link
@@ -30,6 +29,7 @@
 
     <!--Manual CSS-->
     <link rel="stylesheet" href="styles.css" />
+    <link rel = "stylesheet" href = "Sales.css"/>
 
     <!--Icons-->
     <script
@@ -55,7 +55,7 @@
     ></script>
 
     <style>
-        body {font-family: Arial, Helvetica, sans-serif;}
+        
         
         /* The Modal (background) */
         .modal {
@@ -95,6 +95,17 @@
           text-decoration: none;
           cursor: pointer;
         }
+        .eventstable{
+         
+          text-align: center;
+          padding: 20px;
+          width:90%;
+          table-layout: auto;
+        }
+        td{
+          padding: 10px;
+        }
+        
         </style>
 
 
@@ -145,45 +156,43 @@
 
       <p><br/></p>
 
-      <table>
-    
-    <tr>
-      <th> Date </th>
-      <th> Event Location </th>
-      <th> Event Price </th>
-      <th> Entertainment Type </th>
-    </tr>
 
-    <?php
+    <section>
+      <table class="eventstable">
+          <tr>
+            <th> Date </th>
+            <th> Event Location </th>
+            <th> Event Price </th>
+            <th> Entertainment Type </th>
+          </tr>
+
+          <?php
+          while($rows = mysqli_fetch_assoc($result)){
+
+            if($rows['EventDate'] >= date("Y"."-"."m"."-"."d")){
+
+            ?>
+
+            <tr>
+              
+              <td> <?php echo $rows['EventDate']; ?> </td>
+              <td> <?php echo $rows['EventLocation']; ?> </td>
+              <td> <?php echo $rows['EventPrice']; ?>$ </td>
+              <td> <?php echo $rows['EntertainmentType']; ?> </td>
+              <td><button type="button" name="buy" onclick="">Buy Tickets</button></td>
 
 
-    while($rows = mysqli_fetch_assoc($result)){
+            </tr>
 
-      if($rows['EventDate'] >= date("Y"."-"."m"."-"."d")){
+            <?php
 
-      ?>
-
-      <tr>
-        
-        <td> <?php echo $rows['EventDate']; ?> </td>
-        <td> <?php echo $rows['EventLocation']; ?> </td>
-        <td> <?php echo $rows['EventPrice']; ?>$ </td>
-        <td> <?php echo $rows['EntertainmentType']; ?> </td>
-        <td><button type="button" name="buy" onclick="">Buy Tickets</button></td>
-
-
-      </tr>
-
-  <?php
-
-    }
-  }
+             }
+            }
 
     ?>
 
-
-
   </table>
+  </section>
 
 <p><br/><br/></p>
 
