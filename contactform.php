@@ -135,9 +135,9 @@
                     //alert("The total quote for your event is estimated to be $"+ totalQuote+".00");
                     document.getElementById("quoteRequestResult").innerHTML = "The total quote for your event is estimated to be $"+ totalQuote+".00";
                     document.getElementById("quote").value = totalQuote;
-                    
+                  
                     showModal();
-                    alert("Got here");
+                   
                 }
             }
 
