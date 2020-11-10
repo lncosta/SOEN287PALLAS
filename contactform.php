@@ -14,18 +14,29 @@
 
     <head>
         <style type="text/css">
-        
-            main{
+
+            body{
                 background-image: url(media/images/pattern2.jpg);
-                color: #fff;
+            }
+            footer{
+                background-color: #fff;
+            }        
+            main{
+                color: white;
                 padding: 20px;
+                font-size: 1.1em;
             }
 
             .colortext{
                 font-size: 2em;
                 color: lightcyan;
             }
-
+            form{
+                font-size: 1.1em;
+            }
+            select{
+                font-size: 1.1em;
+            }
             .quote{
                 border: 5px solid whitesmoke;
                 text-align: left;
@@ -35,12 +46,14 @@
 
             input{
                 border-radius: 10px;
+                font-size: 1.1em;
                 border: 2px solid whitesmoke;
             }
 
             .submitbutton{
                 border-radius: 10px;
                 border: 2px solid whitesmoke;
+                font-size: 1.1em;
             }
 
             .close{
@@ -56,6 +69,19 @@
             }
         </style>
         <script type="text/javascript">
+        // Get the modal
+            
+
+            // When the user clicks on the button, open the modal
+            function showModal() {
+                document.getElementById("myModal").style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+           function closeModal() {
+                document.getElementById("myModal").style.display = "none";
+            }
+
             function getQuote(){
                 var totalQuote = 0;
 
@@ -109,7 +135,9 @@
                     //alert("The total quote for your event is estimated to be $"+ totalQuote+".00");
                     document.getElementById("quoteRequestResult").innerHTML = "The total quote for your event is estimated to be $"+ totalQuote+".00";
                     document.getElementById("quote").value = totalQuote;
-                    $('#myModal').modal('show'); 
+                    
+                    showModal();
+                    alert("Got here");
                 }
             }
 
@@ -149,6 +177,8 @@
 
     <meta charset="utf-8" />
 
+    <script type="text/javascript" src="script.js"></script>
+
     <!--Google Fonts-->
     <!--Luckiest Guy || Montserrat-->
     <link
@@ -156,13 +186,6 @@
     rel="stylesheet"
     />
 
-    <!--Bootstrap-->
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-    crossorigin="anonymous"
-    />
 
     <!--Manual CSS-->
     <link rel="stylesheet" href="styles.css" />
@@ -193,48 +216,35 @@
     </head>
 
     <body>
-        <section class="colored-section" id="title">
-            <div class="container-fluid">
-              <!--NavBar-->
-              <nav class="navbar navbar-expand-lg navbar-dark">
-                <a class="navbar-brand" href="mainPage.html">Pallas</a>
-                <button
-                  class="navbar-toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="ticketsales.php">Upcoming Performances</a>
+        <section class="navbarsection">  
+        <!--NavBar-->
+            <div class="interiornav">
+                <ul class="navigation" id="navmenu">
+                    <li class="item">
+                        <a class="link" href="mainPage.html"><span class="navbar-brand">PALLAS</span></a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="contactform.php">Contact + Booking</a>
+                    <li class="item">
+                        <a class="link" href="ticketsales.php">Upcoming Performances</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="aboutpage.html">About</a>
+                    <li class="item">
+                        <a class="link" href="contactform.php">Contact + Booking</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="performancearchive.html">Performance Gallery</a>
+                    <li class="item">
+                        <a class="link" href="aboutpage.html">About</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="faq.html">FAQ</a>
+                    <li class="item">
+                        <a class="link" href="performancearchive.html">Performance Gallery</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="userpage.php">User's Page</a>
+                    <li class="item">
+                        <a class="link" href="faq.html">FAQ</a>
                     </li>
-                  </ul>
-                </div>
-              </nav>
-          </section>
+                    <li class="item">
+                        <a class="link" href="userpage.php">User's Page</a>
+                    </li>
+                </ul>
+            </div>
+    </section>
     
-
     <main>
         <h1>Contact us!</h1>
         <p class="colortext">Fill in the form below for a quote estimation, or send us a message in one of our many channels.</p>
@@ -304,9 +314,7 @@
             <br/>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                
+        <div class="modal-div" id="myModal">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
@@ -314,7 +322,7 @@
                         <table>
                             <tr>
                                 <td>Quote Request:</td>
-                                <td class="tdclosebutton"><button type="button" class="close" data-dismiss="modal">&times;</button></td>
+                                <td class="tdclosebutton"><button type="button" id="close" class="close" onclick="closeModal()">&times;</button></td>
                             </tr>
                         </table>
                     </h4>
@@ -324,11 +332,9 @@
                 <p>Book now and receive a 10% discount! Otherwise, we will get back to you in 5 business days.</p>
                 </div>
                 <div class="modal-footer">
-                <button type="button" name = "submitForm" class="btn btn-default" onclick="">Book Now!</button>
-                <button type="button" name = "submitForm" class="btn btn-default" onclick="submitQuote()" data-dismiss="modal">Request Quota via Email and Close.</button>
+                <button type="button" name = "submitForm2" class="submitbutton" onclick="">Book Now!</button>
+                <button type="button" name = "submitForm" class="submitbutton" onclick="submitQuote()">Request Quota via Email and Close.</button>
                 </div>
-            </div>
-            
             </div>
         </div>
   
