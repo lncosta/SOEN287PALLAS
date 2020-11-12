@@ -121,16 +121,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     rel="stylesheet"
     />
 
-    <!--Bootstrap-->
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-    crossorigin="anonymous"
-    />
     <style type="text/css">
-        .wrapper{ width: 50%; padding: 50px; margin: 50px;}
-       
+        input{
+            font-size: 1.05em;
+            font-family: "Montserrat";
+        }
+        .btn-login{
+            background-color: lightblue;
+            border: 5px solid lightblue;
+            border-radius: 5px;
+            font-size: 1.05em;
+        }
+        .input-box{
+            font-size: 1.05;
+            border: 2px solid grey;
+            border-radius: 5px;
+            width: 30%;
+            height: 1.5em;
+        }
     </style>
     <!--Manual CSS-->
     <link rel="stylesheet" href="styles.css" />
@@ -161,86 +169,83 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
     <?php error_reporting(E_ALL); ini_set('display_errors', 1);?>
-    <section class="colored-section" id="title">
-                <div class="container-fluid">
-                <!--NavBar-->
-                 <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="mainPage.html">Pallas</a>
-                    <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    >
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                        <a class="nav-link" href="ticketsales.phpl">Upcoming Performances</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="contactform.php">Contact + Booking</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="aboutpage.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="performancearchive.html">Performance Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="userpage.php">User's Page</a>
-                        </li>
-                    </ul>
-                   </div>
-                </nav>
-        </section>
+    <section class="navbarsection">  
+        <!--NavBar-->
+            <div class="interiornav">
+                <ul class="navigation" id="navmenu">
+                    <li class="item">
+                        <a class="link" href="mainPage.html"><span class="navbar-brand">PALLAS</span></a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="ticketsales.php">Upcoming Performances</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="contactform.php">Contact + Booking</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="aboutpage.html">About</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="performancearchive.html">Performance Gallery</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="userpage.php">User's Page</a>
+                    </li>
+                </ul>
+            </div>
+    </section>
     <main>
     <div class="">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <label>Email</label>
-                <br/>
-                <input type="text" name="email" value="<?php echo $email; ?>">
-                <br/>
+                <br/><br/>
+                <input type="text" class="input-box" name="email" value="<?php echo $email; ?>">
+                <br/><br/>
                 <span class="help-block"><?php echo $email_err."<br/>"; ?></span>
                 
                 <label>First Name</label>
-                <br/>
-                <input type="text" name="fname" value="<?php echo $fname; ?>">
-                <br/>
+                <br/><br/>
+                <input type="text" class="input-box" name="fname" value="<?php echo $fname; ?>">
+                <br/><br/>
                 <span class="help-block"><?php echo $fname_err; ?></span> 
 
                 <label>Last Name</label>
-                <br/>
-                <input type="text" name="lname" value="<?php echo $lname; ?>">
-                <br/>
+                <br/><br/>
+                <input type="text" class="input-box" name="lname" value="<?php echo $lname; ?>">
+                <br/><br/>
                 <span class="help-block"><?php echo $lname_err; ?></span> 
                 
                 <label>Password</label>
-                <br/>
-                <input type="password" name="password" value="<?php echo $password; ?>">
-                <br/>
+                <br/><br/>
+                <input type="password" class="input-box" name="password" value="<?php echo $password; ?>">
+                <br/><br/>
                 <span class="help-block"><?php echo $password_err; ?></span>
                 
                 <label>Confirm Password</label>
-                <br/>
-                <input type="password" name="confirm_password" value="<?php echo $confirm_password; ?>">
-                <br/>
+                <br/><br/>
+                <input type="password" class="input-box" name="confirm_password" value="<?php echo $confirm_password; ?>">
+                <br/><br/>
                 <span class="help-block"><?php echo $confirm_password_err; ?></span>
 
-                <input type="submit" value="Submit">
-                <input type="reset"  value="Reset">
+                <input type="submit" class="btn-login" value="Submit">
+                <input type="reset" class="btn-login" value="Reset">
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
-    </div>  
-</main>  
+        </div>  
+    </main>  
+    <footer class="white-section" id="footer">
+        <div class="container-fluid">
+          <i class="footer-icon fab fa-twitter"></i>
+          <i class="footer-icon fab fa-facebook-f"></i>
+          <i class="footer-icon fab fa-instagram"></i>
+          <i class="footer-icon fas fa-envelope"></i>
+          <p>© Copyright 2020 PALLAS Entertainment</p>
+        </div>
+      </footer>
 </body>
 </html>
