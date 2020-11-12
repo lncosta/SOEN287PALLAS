@@ -8,6 +8,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+$email = $_SESSION["email"];
+include_once('connect.php');
+$query = "SELECT * FROM `quoteform`";
+$result = mysqli_query($conn, $query);
 
 ?>
  
@@ -23,15 +27,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     rel="stylesheet"
     />
 
-    <!--Bootstrap-->
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-    crossorigin="anonymous"
-    />
     <style type="text/css">
         .wrapper{ width: 50%; padding: 50px; margin: 50px;}
+        .btndefault{
+            font-size: 1.15em;
+            background-color: lightblue;
+            color: black;
+            border: 2px solid blue;
+            border-radius: 5px;
+        }
+        .booked{
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+            width:600px; 
+            line-height:40px;
+        }
        
     </style>
     <!--Manual CSS-->
@@ -64,56 +75,78 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 </head>
 <body>
-    <section class="colored-section" id="title">
-                <div class="container-fluid">
-                <!--NavBar-->
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="mainPage.html">Pallas</a>
-                    <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    >
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                        <a class="nav-link" href="ticketsales.php">Upcoming Performances</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="contactform.php">Contact + Booking</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="aboutpage.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="performancearchive.html">Performance Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="userpage.php">User's Page</a>
-                        </li>
-                    </ul>
-                    </div>
-                </nav>
-        </section>
+    <section class="navbarsection">  
+        <!--NavBar-->
+            <div class="interiornav">
+                <ul class="navigation" id="navmenu">
+                    <li class="item">
+                        <a class="link" href="mainPage.html"><span class="navbar-brand">PALLAS</span></a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="ticketsales.php">Upcoming Performances</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="contactform.php">Contact + Booking</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="aboutpage.html">About</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="performancearchive.html">Performance Gallery</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="userpage.php">User's Page</a>
+                    </li>
+                </ul>
+            </div>
+    </section>
     <div>
         <h1>Hi, <b><?php echo $_SESSION["fname"]; ?></b>. Welcome to our site.</h1>
     </div>
     <div>
         <h2>Your Tickets:</h2>
         <h2>Your Bookings:</h2>
+            <table class="booked">
+                <tr>
+                    <th>Date</th>
+                    <th>Booked Acts</th>
+                    <th>Optional Services </th>
+                    <th>Total Price</th>
+                    <th>Event Type</th>
+                </tr>
+                <?php
+                     while($rows = mysqli_fetch_assoc($result)){
+                         if($rows['email'] == $_SESSION["email"]){
+                        ?>
+                            <tr>
+                            <td> <?php echo $rows['date']; ?> </td>
+                            <td> <?php echo $rows['services']; ?> </td>
+                            <td> <?php echo $rows['optionals']; ?> </td>
+                            <td> <?php echo $rows['quote']; ?> </td>
+                            <td> <?php echo $rows['eventtype']; ?> </td>
+                           </tr>
+                        <?php
+                        }
+                    }
+                ?>
+
+            </table>
         <h2>Your Reviews:</h2>
     </div>  
     <p>
-        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+        <a href="logout.php" class="btndefault">Sign Out of Your Account</a>
     </p>
+    <footer class="white-section" id="footer">
+        <div class="container-fluid">
+          <i class="footer-icon fab fa-twitter"></i>
+          <i class="footer-icon fab fa-facebook-f"></i>
+          <i class="footer-icon fab fa-instagram"></i>
+          <i class="footer-icon fas fa-envelope"></i>
+          <p>© Copyright 2020 PALLAS Entertainment</p>
+        </div>
+      </footer>
 </body>
 </html>
