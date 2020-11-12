@@ -22,14 +22,6 @@
         rel="stylesheet"
         />
     
-        <!--Bootstrap-->
-        <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-        crossorigin="anonymous"
-        />
-    
         <!--Manual CSS-->
         <link rel="stylesheet" href="styles.css" />
     
@@ -39,22 +31,6 @@
         crossorigin="anonymous"
         ></script>
     
-        <!--Javascript and JQuery-->
-        <script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
-        ></script>
-        <script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"
-        ></script>
-        <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"
-        ></script>
         <style type="text/css">
         #myEvaluation {
           display:block;
@@ -139,60 +115,51 @@
           }
         }
 
+        .btn{
+            background-color: white;
+            border: 5px solid white;
+            border-radius: 5px;
+            font-size: 1.05em;
+        }
+
     </style>
     </head>
 
     <body>
-        <section class="colored-section" id="title">
-            <div class="container-fluid">
-              <!--NavBar-->
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                <a class="navbar-brand" href="mainPage.html">Pallas</a>
-                <button
-                  class="navbar-toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                >
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="ticketsales.php">Upcoming Performances</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="contactform.php">Contact + Booking</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="aboutpage.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="performancearchive.html">Performance Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="faq.html">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="userpage.php">User's Page</a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-          </section>
-            
-          <main>
-		  
-		  
-		   
-		  <div align="center">
+      <section class="navbarsection">
+               
+        <!--NavBar-->
+          <div class="interiornav">
+            <ul class="navigation">
+              <li class="item">
+                  <a class="link" href="mainPage.html"><span class="navbar-brand">PALLAS</span></a>
+                </li>
+              <li class="item">
+                <a class="link" href="ticketsales.php">Upcoming Performances</a>
+              </li>
+              <li class="item">
+                <a class="link" href="contactform.php">Contact + Booking</a>
+              </li>
+              <li class="item">
+                <a class="link" href="aboutpage.html">About</a>
+              </li>
+              <li class="item">
+                <a class="link" href="performancearchive.html">Performance Gallery</a>
+              </li>
+              <li class="item">
+                <a class="link" href="faq.html">FAQ</a>
+              </li>
+              <li class="item">
+                <a class="link" href="userpage.php">User's Page</a>
+              </li>
+            </ul>
+          </div>
+      </section>
 
-    <h1>Entertainment you just can't miss! </h1>
-	   <!-- Display the animated image -->
-    <!--<canvas class="anim" id="canvas" width="300" height="300"></canvas>-->
+            
+  <main>
+		  <div align="center">
+        <h1>Entertainment you just can't miss! </h1>
         <br/>
 		 <!-- Display the first entertainementvideo  -->
   	      	<h2> Below are videos of past events we participated in:</h2>
@@ -454,7 +421,7 @@ init();
         	        	<textarea id="addinfo" name="addinfo" rows=4 cols="50" placeholder="Please add any additional information here that helps us evaluate your satisfaction"></textarea>
 	                	<br/>
 		                <br/>
-        		        <button type="button" name="submitForm" onclick="submitEvaluation()" class="submitbutton">Evaluate entertainment</button>
+        		        <button type="button" class="btn" name="submitForm" onclick="submitEvaluation()" class="submitbutton">Evaluate entertainment</button>
 </br>
 	        	 </form>
 		  
