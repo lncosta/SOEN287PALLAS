@@ -29,6 +29,23 @@ if(mysqli_query($link, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
+
+$to_email = $param_email;
+$subject = "Pallas Entertainment - Your Quote Estimation";
+$body = "Hi, ".$param_fname.".\nHere's the quote for your event on ".$param_date.".\nName: ".$param_fname." ".$param_lname."."."\nPhone: ".$param_phone."."."\nType: ".$param_eventtype."."."\nPerformances: ".$param_services.".".
+"\nOptional Services: ".$param_optionals.".".
+"\nBudget: ".$param_budget.".".
+"\nAdditional Requests: ".$param_message.".".
+"\nQuote: $".$param_quote.".00.".
+"\nOne of our representatives will reach out to you soon to discuss your event. In the meantime, you can contact us through of our many channels. \nThank you for choosing PALLAS!. \n-The PALLAS team."
+;
+$headers = "From: PALLAS";
+ 
+if (mail($to_email, $subject, $body, $headers)) {
+    echo "Email successfully sent to $to_email...";
+} else {
+    echo "Email sending failed...";
+}
  
 // Close connection
 mysqli_close($link);
@@ -47,6 +64,9 @@ mysqli_close($link);
 
     
     <style type="text/css">
+        body{
+            margin: 20px;
+        }
         .mail{
             margin: 20px;
             padding: 20px;
@@ -54,10 +74,11 @@ mysqli_close($link);
             border: 2px solid blue;
         }
         .btn{
-            background-color: crimson;
-            border: 5px solid crimson;
+            background-color: lightblue;
+            border: 5px solid lightblue;
             border-radius: 5px;
             color: black;
+            text-decoration: none;
 
         }
         .btn a{
@@ -75,24 +96,7 @@ mysqli_close($link);
     crossorigin="anonymous"
     ></script>
 
-    <!--Javascript and JQuery-->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"
-    ></script>
-    
-  
+     
 </head> 
 <body>
     <section class="navbarsection">  
@@ -141,8 +145,19 @@ mysqli_close($link);
         <h2>Additional Requests: <b><?php echo $param_message ?></b></h2>
         <h2>Your Quote: $<b><?php echo $param_quote ?>.00</b></h2>
     </div>  
+    <br/>
     <p>
         <a href="mainpage.html" class="btn">Return to Home Page</a>
     </p>
+
+    <footer class="white-section" id="footer">
+        <div class="container-fluid">
+          <i class="footer-icon fab fa-twitter"></i>
+          <i class="footer-icon fab fa-facebook-f"></i>
+          <i class="footer-icon fab fa-instagram"></i>
+          <i class="footer-icon fas fa-envelope"></i>
+          <p>© Copyright 2020 PALLAS Entertainment</p>
+        </div>
+      </footer>
 </body>
 </html>
