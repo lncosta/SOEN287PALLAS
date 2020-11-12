@@ -32,10 +32,14 @@
                 color: lightcyan;
             }
             form{
-                font-size: 1.1em;
+                font-size: 1.05em;
+                font-family: "Montserrat";
             }
             select{
-                font-size: 1.1em;
+                border-radius: 10px;
+                border: 2px solid whitesmoke;
+                font-size: 1.05em;
+                font-family: "Montserrat";
             }
             .quote{
                 border: 5px solid whitesmoke;
@@ -44,16 +48,19 @@
                 margin: 15px;
             }
 
-            input{
+            input, textarea{
                 border-radius: 10px;
-                font-size: 1.1em;
+                font-size: 1em;
                 border: 2px solid whitesmoke;
+                font-family: "Montserrat";
             }
+
 
             .submitbutton{
                 border-radius: 10px;
                 border: 2px solid whitesmoke;
                 font-size: 1.1em;
+                font-family: "Montserrat";
             }
 
             .close{
@@ -135,9 +142,8 @@
                     //alert("The total quote for your event is estimated to be $"+ totalQuote+".00");
                     document.getElementById("quoteRequestResult").innerHTML = "The total quote for your event is estimated to be $"+ totalQuote+".00";
                     document.getElementById("quote").value = totalQuote;
-                  
+                    
                     showModal();
-                   
                 }
             }
 
@@ -186,30 +192,12 @@
     rel="stylesheet"
     />
 
-
     <!--Manual CSS-->
     <link rel="stylesheet" href="styles.css" />
 
     <!--Icons-->
     <script
     src="https://kit.fontawesome.com/ba7a137c00.js"
-    crossorigin="anonymous"
-    ></script>
-
-    <!--Javascript and JQuery-->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"
     ></script>
 
@@ -308,7 +296,7 @@
                 <br/>
                 <input type="hidden" name="quote" id="quote" value=""/>
                 <button type="button" name="submitForm" onclick="reviewForm()" class="submitbutton">Request Quote </button>
-                <input type="reset">
+                <input type="reset" class="submitbutton">
             </form>
             <br/>
             <br/>
