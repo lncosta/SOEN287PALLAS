@@ -92,17 +92,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@400;700;900&display=swap"
     rel="stylesheet"
     />
-
-    <!--Bootstrap-->
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-    crossorigin="anonymous"
-    />
     
     <!--Manual CSS-->
     <link rel="stylesheet" href="styles.css" />
+
+    <style type="text/css">
+        input{
+            font-size: 1.05em;
+            font-family: "Montserrat";
+        }
+        .btn-login{
+            background-color: lightblue;
+            border: 5px solid lightblue;
+            border-radius: 5px;
+            font-size: 1.05em;
+        }
+        .input-box{
+            font-size: 1.05;
+            border: 2px solid grey;
+            border-radius: 5px;
+            width: 30%;
+            height: 1.5em;
+        }
+    </style>
 
     <!--Icons-->
     <script
@@ -129,64 +141,62 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
 </head>
 <body>
-    <section class="colored-section" id="title">
-                <div class="container-fluid">
-                <!--NavBar-->
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="mainPage.html">Pallas</a>
-                    <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    >
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                        <a class="nav-link" href="ticketsales.php">Upcoming Performances</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="contactform.php">Contact + Booking</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="aboutpage.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="performancearchive.html">Performance Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="userpage.php">User's Page</a>
-                        </li>
-                    </ul>
-                    </div>
-                </nav>
-        </section>
+    <section class="navbarsection">  
+        <!--NavBar-->
+            <div class="interiornav">
+                <ul class="navigation" id="navmenu">
+                    <li class="item">
+                        <a class="link" href="mainPage.html"><span class="navbar-brand">PALLAS</span></a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="ticketsales.php">Upcoming Performances</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="contactform.php">Contact + Booking</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="aboutpage.html">About</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="performancearchive.html">Performance Gallery</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="userpage.php">User's Page</a>
+                    </li>
+                </ul>
+            </div>
+    </section>
     <div class="loginsection">
         <h2>Log in!</h2>
         <p>Enter your information below to log in.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <label>Email:</label>
-                <br/>
-                <input type="text" name="email" value="<?php echo $email; ?>">
-                <br/>
+                <br/><br/>
+                <input type="text" class="input-box" name="email" value="<?php echo $email; ?>">
+                <br/><br/>
                 <span class="help-block"><?php echo $email_err."<br/>"; ?></span>  
                 <label>Password</label>
-                <br/>
-                <input type="password" name="password"  value="<?php echo $password; ?>">
-                <br/>
+                <br/><br/>
+                <input type="password" class="input-box" name="password"  value="<?php echo $password; ?>">
+                <br/><br/>
                 <span class="help-block"><?php echo $password_err."<br/>"; ?></span>
-                <input type="submit" value="Login">
+                <input type="submit"  class="btn-login" value="Login">
             <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
         </form>
     </div>    
+
+    <footer class="white-section" id="footer">
+        <div class="container-fluid">
+          <i class="footer-icon fab fa-twitter"></i>
+          <i class="footer-icon fab fa-facebook-f"></i>
+          <i class="footer-icon fab fa-instagram"></i>
+          <i class="footer-icon fas fa-envelope"></i>
+          <p>© Copyright 2020 PALLAS Entertainment</p>
+        </div>
+      </footer>
 
 </body>
 </html>
