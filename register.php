@@ -92,6 +92,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
+                //Send confirmation email
+                $to_email = $param_email;
+                $subject = "Pallas Entertainment - Your account has been created";
+                $body = "Hi, ".$param_fname.".\nYour Pallas account has been created! Here's your account information:\nYour email: ".$param_email.".\nName: ".$param_fname." ".$param_lname."."."\nPassword: ".$password.".".
+                "\nYou can now log into your account to view bookings, tickets, ticket sales, and add reviews. \nThank you for choosing PALLAS!. \n-The PALLAS team."
+                ;
+                $headers = "From: PALLAS";
+
+                if (mail($to_email, $subject, $body, $headers)) {
+                        echo "Email successfully sent to $to_email...";
+                } 
+                else {
+                        echo "Email failed...";
+                }
                 // Redirect to login page
                 header("location: login.php");
             } else{
@@ -149,22 +163,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     crossorigin="anonymous"
     ></script>
 
-    <!--Javascript and JQuery-->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"
-    ></script>
    
 </head>
 <body>
