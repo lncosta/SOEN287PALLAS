@@ -28,6 +28,7 @@ if(mysqli_query($link, $sql)){
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
+
  
 // Close connection
 mysqli_close($link);
@@ -44,19 +45,24 @@ mysqli_close($link);
     rel="stylesheet"
     />
 
-    <!--Bootstrap-->
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-    crossorigin="anonymous"
-    />
+    
     <style type="text/css">
         .mail{
             margin: 20px;
             padding: 20px;
             text-align: left;
             border: 2px solid blue;
+        }
+        .btn{
+            background-color: crimson;
+            border: 5px solid crimson;
+            border-radius: 5px;
+            color: black;
+
+        }
+        .btn a{
+            color: black;
+
         }
        
     </style>
@@ -87,48 +93,36 @@ mysqli_close($link);
     ></script>
     
   
-</head>
+</head> 
 <body>
-    <section class="colored-section" id="title">
-                <div class="container-fluid">
-                <!--NavBar-->
-                <nav class="navbar navbar-expand-lg navbar-dark">
-                    <a class="navbar-brand" href="mainPage.html">Pallas</a>
-                    <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                    >
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                        <a class="nav-link" href="upcomingevents.html">Upcoming Performances</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="contactform.html">Contact + Booking</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="aboutpage.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="performancearchive.html">Performance Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="faq.html">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="userpage.php">User's Page</a>
-                        </li>
-                    </ul>
-                    </div>
-                </nav>
-        </section>
+    <section class="navbarsection">  
+        <!--NavBar-->
+            <div class="interiornav">
+                <ul class="navigation" id="navmenu">
+                    <li class="item">
+                        <a class="link" href="mainPage.html"><span class="navbar-brand">PALLAS</span></a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="ticketsales.php">Upcoming Performances</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="contactform.php">Contact + Booking</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="aboutpage.html">About</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="performancearchive.html">Performance Gallery</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="userpage.php">User's Page</a>
+                    </li>
+                </ul>
+            </div>
+    </section>
     <div>
         <br/>
         <h1>Hi, <b><?php echo $param_fname ?></b>. Your quote estimation has been sent to your email. Here is a summary of your request:</h1>
@@ -148,7 +142,7 @@ mysqli_close($link);
         <h2>Your Quote: $<b><?php echo $param_quote ?>.00</b></h2>
     </div>  
     <p>
-        <a href="mainpage.html" class="btn btn-warning">Return to Home Page</a>
+        <a href="mainpage.html" class="btn">Return to Home Page</a>
     </p>
 </body>
 </html>
