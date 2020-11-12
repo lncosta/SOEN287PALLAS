@@ -1,1 +1,4 @@
 # SOEN287PALLAS
+SOEN 287 Q Fall 2020
+Final Project
+Team 8
