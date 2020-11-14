@@ -1,0 +1,10 @@
+CREATE TABLE `reviews` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `email` varchar(50) NOT NULL,
+ `userreview` varchar(255) NOT NULL,
+ `rating` int(11) NOT NULL,
+ `created_at` datetime DEFAULT current_timestamp(),
+ `fname` varchar(50) NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4
