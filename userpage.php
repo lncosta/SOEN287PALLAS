@@ -33,16 +33,48 @@ $result = mysqli_query($conn, $query);
             font-size: 1.15em;
             background-color: lightblue;
             color: black;
-            border: 2px solid blue;
+            border: 2px solid lightblue;
             border-radius: 5px;
+            text-decoration: none;
+            font-style: "Montserrat";
         }
         .booked{
             text-align: center;
             margin-right: auto;
             margin-left: auto;
-            width:600px; 
+            width:88%; 
             line-height:40px;
         }
+
+        .stars {
+        display: inline-block;
+        }
+        .stars * {
+        float: right;
+        }
+        .stars input {
+        display: none;
+        }
+        .stars label {
+        font-size: 30px;
+        }
+
+        .stars input:checked ~ label {
+        color: gold;
+        }
+        
+        .stars label:hover,
+        label:hover ~ label {
+        color: gold;
+        }
+        */
+      
+       .stars  input:checked ~ label:hover,
+        input:checked ~ label:hover ~ label {
+        color: gold !important;
+        }
+       
+
        
     </style>
     <!--Manual CSS-->
@@ -54,24 +86,17 @@ $result = mysqli_query($conn, $query);
     crossorigin="anonymous"
     ></script>
 
-    <!--Javascript and JQuery-->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"
-    ></script>
-    
-  
+    <script type="text/javascript">
+         // When the user clicks on the button, open the modal
+        function showModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+    </script>
 
 </head>
 <body>
@@ -107,6 +132,7 @@ $result = mysqli_query($conn, $query);
         <h1>Hi, <b><?php echo $_SESSION["fname"]; ?></b>. Welcome to our site.</h1>
     </div>
     <div>
+        <h2>Special Prices, Just For You!</h2>
         <h2>Your Tickets:</h2>
         <h2>Your Bookings:</h2>
             <table class="booked">
@@ -116,6 +142,7 @@ $result = mysqli_query($conn, $query);
                     <th>Optional Services </th>
                     <th>Total Price</th>
                     <th>Event Type</th>
+                    <th>Payment Status</th>
                 </tr>
                 <?php
                      while($rows = mysqli_fetch_assoc($result)){
@@ -125,8 +152,17 @@ $result = mysqli_query($conn, $query);
                             <td> <?php echo $rows['date']; ?> </td>
                             <td> <?php echo $rows['services']; ?> </td>
                             <td> <?php echo $rows['optionals']; ?> </td>
-                            <td> <?php echo $rows['quote']; ?> </td>
+                            <td> $<?php echo $rows['quote']; ?>.00 </td>
                             <td> <?php echo $rows['eventtype']; ?> </td>
+                            <td><?php 
+                                if($rows['paidfor']){
+                                    echo "Payment Fulfilled";
+                                }
+                                else{
+                                    echo "Payment Pending";
+                                }
+                            ?>
+                            </td>
                            </tr>
                         <?php
                         }
@@ -134,11 +170,64 @@ $result = mysqli_query($conn, $query);
                 ?>
 
             </table>
+            <p>
+                <a href="addeventsale.php" class="btndefault">Sell Tickets For Your Public Event</a>
+          </p>
+        <h2>Your Ticket Sales</h2>
         <h2>Your Reviews:</h2>
+        <div id="reviews">
+            <button type="button" class="btndefault" onclick="showModal()">Add Review</button>
+        </div>
     </div>  
     <p>
         <a href="logout.php" class="btndefault">Sign Out of Your Account</a>
     </p>
+        <!-- Modal -->
+        <div class="modal-div" id="myModal">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <table>
+                            <tr>
+                                <td>Add Review:</td>
+                                <td class="tdclosebutton"><button type="button" id="close" class="close" onclick="closeModal()">&times;</button></td>
+                            </tr>
+                        </table>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                
+                <form id="myform" action="savereview.php" method="post">
+                    <label>Select Your Rating</label>
+                    <br/>
+                    <div class="stars">
+                    <input type="radio" id="r1" name="rating" value="5">
+                    <label for="r1">&#9733;</label>
+                    <input type="radio" id="r2" name="rating" value="4">
+                    <label for="r2">&#9733;</label>
+                    <input type="radio" id="r3" name="rating" value="3">
+                    <label for="r3">&#9733;</label>
+                    <input type="radio" id="r4" name="rating" value="2">
+                    <label for="r4">&#9733;</label>
+                    <input type="radio" id="r5" name="rating" value="1">
+                    <label for="r5">&#9733;</label>
+                    </div>
+                    <input type="hidden" name="fname" value="<?php echo $_SESSION["fname"]; ?>">
+                    <input type="hidden" name="email" value="<?php echo $_SESSION["email"]; ?>">
+                    <br/>
+                    <label>Write Your Review Below</label>
+                    <br/>
+                    <br/>
+                    <textarea id="userreview" name="userreview" rows=4 cols="50" placeholder="Please add review here"></textarea>
+                
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btndefault"/>
+                </form>
+                </div>
+            </div>
+        </div>
     <footer class="white-section" id="footer">
         <div class="container-fluid">
           <i class="footer-icon fab fa-twitter"></i>
