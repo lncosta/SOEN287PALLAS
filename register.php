@@ -184,7 +184,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <a class="link" href="aboutpage.html">About</a>
                     </li>
                     <li class="item">
-                        <a class="link" href="performancearchive.html">Performance Gallery</a>
+                        <a class="link" href="performancearchive.php">Performance Gallery</a>
                     </li>
                     <li class="item">
                         <a class="link" href="faq.html">FAQ</a>
