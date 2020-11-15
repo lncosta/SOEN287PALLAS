@@ -73,6 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             // Close statement
             mysqli_stmt_close($stmt);
+            
         }
     }
     
@@ -121,23 +122,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     src="https://kit.fontawesome.com/ba7a137c00.js"
     crossorigin="anonymous"
     ></script>
-
-    <!--Javascript and JQuery-->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"
-    ></script>
     
 </head>
 <body>
@@ -158,7 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <a class="link" href="aboutpage.html">About</a>
                     </li>
                     <li class="item">
-                        <a class="link" href="performancearchive.html">Performance Gallery</a>
+                        <a class="link" href="performancearchive.php">Performance Gallery</a>
                     </li>
                     <li class="item">
                         <a class="link" href="faq.html">FAQ</a>
@@ -185,6 +169,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span class="help-block"><?php echo $password_err."<br/>"; ?></span>
                 <input type="submit"  class="btn-login" value="Login">
             <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+            <p>Forgot your password? <a href="">Reset Here</a>.</p>
         </form>
     </div>    
 
