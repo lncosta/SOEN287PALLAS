@@ -117,7 +117,7 @@ $result = mysqli_query($conn, $query);
                         <a class="link" href="aboutpage.html">About</a>
                     </li>
                     <li class="item">
-                        <a class="link" href="performancearchive.html">Performance Gallery</a>
+                        <a class="link" href="performancearchive.php">Performance Gallery</a>
                     </li>
                     <li class="item">
                         <a class="link" href="faq.html">FAQ</a>
@@ -145,6 +145,7 @@ $result = mysqli_query($conn, $query);
                     <th>Payment Status</th>
                 </tr>
                 <?php
+                    $publiccounter = 0;
                      while($rows = mysqli_fetch_assoc($result)){
                          if($rows['email'] == $_SESSION["email"]){
                         ?>
@@ -154,6 +155,11 @@ $result = mysqli_query($conn, $query);
                             <td> <?php echo $rows['optionals']; ?> </td>
                             <td> $<?php echo $rows['quote']; ?>.00 </td>
                             <td> <?php echo $rows['eventtype']; ?> </td>
+                            <?php 
+                                if($rows['eventtype'] == "public"){
+                                    $publiccounter++;
+                                }
+                            ?>
                             <td><?php 
                                 if($rows['paidfor']){
                                     echo "Payment Fulfilled";
@@ -170,8 +176,16 @@ $result = mysqli_query($conn, $query);
                 ?>
 
             </table>
+            <h3>Add tickets for sale</h3>
             <p>
-                <a href="addeventsale.php" class="btndefault">Sell Tickets For Your Public Event</a>
+                <?php
+                if($publiccounter > 0){
+                    echo "<a href="."addeventsale.php"." class="."btndefault".">Sell Tickets For Your Public Event</a>";
+                }
+                else
+                echo "<a href=\"\" class= \"btndefault\">You have no public events booked</a>";
+
+                ?>
           </p>
         <h2>Your Ticket Sales</h2>
         <h2>Your Reviews:</h2>
