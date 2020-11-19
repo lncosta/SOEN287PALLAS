@@ -1,3 +1,13 @@
+<?php
+include_once('connect.php');
+$query = "SELECT * FROM `quoteform`";
+$result = mysqli_query($conn, $query);
+
+    $datesBooked = array();
+    while($rows = mysqli_fetch_assoc($result)){
+        array_push($datesBooked, $rows['date']);
+    }
+?>
 <!DOCTYPE html>
 <html>
     <!--SOEN 287 Group Project
@@ -73,6 +83,10 @@
 
             td.tdclosebutton{
                 margin-left: 2em;
+            }
+            .red, .ui-datepicker .red span {
+                    background: none #ff4751;
+                    border: 1px solid #BF5A0C;
             }
         </style>
         <script type="text/javascript">
@@ -201,6 +215,28 @@
     crossorigin="anonymous"
     ></script>
 
+    <!--JQuery for booking calendar -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function() {
+            var pickerOptions = {
+                dateFormat: "yy-mm-dd",
+                beforeShowDay: function(date){
+                    var enableDays =  <?php echo json_encode($datesBooked);?>;
+                    var formattedDate = jQuery.datepicker.formatDate("yy-mm-dd", date);
+                    if(enableDays.indexOf(formattedDate)==-1){ 
+                        return[true,'green'];
+                    }else{
+                    return[false, 'red'];
+                    }
+                }
+            };  
+            $( "#eventdate" ).datepicker(pickerOptions);
+        } );
+    </script>
     </head>
 
     <body>
@@ -231,7 +267,7 @@
                     </li>
                 </ul>
             </div>
-    </section>
+        </section>
     
     <main>
         <h1>Contact us!</h1>
@@ -253,7 +289,8 @@
                 <br/>
                 <br/>
                 <label>Event Date:</label> <!--Check if available-->
-                <input type="date" id="eventdate" name="date"/>
+                <!--<input type="date" id="eventdate" name="date"/>-->
+                <input type="text" name="date" id="eventdate" placeholder="dd/mm/yyyy"/>
                 <br/>
                 <br/>
                 <label>Event Type:</label>
@@ -321,7 +358,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" name = "submitForm2" class="submitbutton" onclick="">Book Now!</button>
-                <button type="button" name = "submitForm" class="submitbutton" onclick="submitQuote()">Request Quota via Email and Close.</button>
+                <button type="button" name = "submitForm" class="submitbutton" onclick="submitQuote()">Request Quote via Email and Close.</button>
                 </div>
             </div>
         </div>
