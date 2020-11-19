@@ -55,7 +55,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;  
                             $_SESSION["fname"] = $fname; 
-                            $_SESSION["lname"] = $lname;                                                                                 
+                            $_SESSION["lname"] = $lname; 
+                            $_SESSION["discount"] = rand(5, 25);                                                                                
                             // Redirect user to welcome page
                             header("location: userpage.php");
                         } else{
