@@ -1,7 +1,6 @@
 <?php
 // Initialize the session
 session_start();
-//var_dump($_SESSION);
  
 // Check if the user is logged in, if not then redirect them to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
@@ -12,6 +11,8 @@ $email = $_SESSION["email"];
 include_once('connect.php');
 $query = "SELECT * FROM `quoteform`";
 $result = mysqli_query($conn, $query);
+$query2 = "SELECT * FROM `upcoming events`";
+$result2 = mysqli_query($conn, $query2);
 
 ?>
  
@@ -133,6 +134,35 @@ $result = mysqli_query($conn, $query);
     </div>
     <div>
         <h2>Special Prices, Just For You!</h2>
+        <div>
+            <table class="booked">
+                <tr>
+                    <th> Date </th>
+                    <th> Event Location </th>
+                    <th> Event Price </th>
+                    <th> Your Discounted Price </th>
+                    <th> Entertainment Type </th>
+                </tr>
+                <?php
+                $discount = $_SESSION["discount"];
+                $discount = $discount/100;
+                while($rows = mysqli_fetch_assoc($result2)){
+                    if($rows['DiscountedEvent'] == "yes"){
+                    ?>
+                    <tr>
+                    <td> <?php echo $rows['EventDate']; ?> </td>
+                    <td> <?php echo $rows['EventLocation']; ?> </td>
+                    <td> <?php echo $rows['EventPrice']; ?>$ </td>
+                    <td> <?php echo $rows['EventPrice']*(1-$discount); ?>$ </td>
+                    <td> <?php echo $rows['EntertainmentType']; ?> </td>
+                    <td><button type="button" name="buy" onclick="">Buy Tickets</button></td>
+                    </tr>
+                    <?php
+                    }
+                    }
+                 ?>
+             </table>
+        </div>
         <h2>Your Tickets:</h2>
         <h2>Your Bookings:</h2>
             <table class="booked">
@@ -187,7 +217,7 @@ $result = mysqli_query($conn, $query);
 
                 ?>
           </p>
-        <h2>Your Ticket Sales</h2>
+        <h2>Your Ticket Sales:</h2>
         <h2>Your Reviews:</h2>
         <div id="reviews">
             <button type="button" class="btndefault" onclick="showModal()">Add Review</button>
