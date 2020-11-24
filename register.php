@@ -1,12 +1,11 @@
 <?php
-// Include config file
 require_once "config.php";
- 
-// Define variables and initialize with empty values
+
+// Define variables and initialize as empty.
 $email = $password = $fname = $lname = $confirm_password = "";
 $email_err = $password_err = $fname_err = $lname_err = $confirm_password_err = "";
  
-// Processing form data when form is submitted
+// Server-side validation
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validate email
@@ -17,26 +16,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $sql = "SELECT id FROM users WHERE email= ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_email);
-            
-            // Set parameters
             $param_email = trim($_POST["email"]);
-            
-            // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
-                /* store result */
                 mysqli_stmt_store_result($stmt);
-                
                 if(mysqli_stmt_num_rows($stmt) == 1){
-                    $email_err = "This email is already taken.";
+                    $email_err = "An account has already been registered with this email.";
                 } else{
                     $email = trim($_POST["email"]);
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Something went wrong. Please try again later.";
             }
-
             // Close statement
             mysqli_stmt_close($stmt);
         }
@@ -55,12 +46,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $lname= trim($_POST["lname"]);
     }
     
+    $pattern = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,}$/'; //Standard pattern for password match.
     // Validate password
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter a password.";     
     } elseif(strlen(trim($_POST["password"])) < 8){
         $password_err = "Password must have at least 8 characters.";
-    } else{
+    } 
+    elseif(!preg_match($pattern, $_POST["password"])){
+        $password_err = "Password must contain at least one capital leter, one number, and one special character.";
+    }
+    else{
         $password = trim($_POST["password"]);
     }
     
@@ -96,7 +92,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $to_email = $param_email;
                 $subject = "Pallas Entertainment - Your account has been created";
                 $body = "Hi, ".$param_fname.".\nYour Pallas account has been created! Here's your account information:\nYour email: ".$param_email.".\nName: ".$param_fname." ".$param_lname."."."\nPassword: ".$password.".".
-                "\nYou can now log into your account to view bookings, tickets, ticket sales, and add reviews. \nThank you for choosing PALLAS!. \n-The PALLAS team."
+                "\nYou can now log into your account to view bookings, tickets, ticket sales, and add reviews. \nThank you for choosing PALLAS!\n-The PALLAS team."
                 ;
                 $headers = "From: PALLAS";
 
@@ -104,7 +100,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         echo "Email successfully sent to $to_email...";
                 } 
                 else {
-                        echo "Email failed...";
+                        echo "Email failed.";
                 }
                 // Redirect to login page
                 header("location: login.php");
@@ -145,6 +141,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             border: 5px solid lightblue;
             border-radius: 5px;
             font-size: 1.05em;
+            width: 15%;
         }
         .input-box{
             font-size: 1.05;
@@ -152,6 +149,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             border-radius: 5px;
             width: 30%;
             height: 1.5em;
+        }
+        .error{
+            color: red;
         }
     </style>
     <!--Manual CSS-->
@@ -204,31 +204,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <br/><br/>
                 <input type="text" class="input-box" name="email" value="<?php echo $email; ?>">
                 <br/><br/>
-                <span class="help-block"><?php echo $email_err."<br/>"; ?></span>
+                <span class="error"><?php echo $email_err."<br/><br/>"; ?></span>
                 
                 <label>First Name</label>
                 <br/><br/>
                 <input type="text" class="input-box" name="fname" value="<?php echo $fname; ?>">
                 <br/><br/>
-                <span class="help-block"><?php echo $fname_err; ?></span> 
+                <span class="error"><?php echo $fname_err."<br/><br/>"; ?></span> 
 
                 <label>Last Name</label>
                 <br/><br/>
                 <input type="text" class="input-box" name="lname" value="<?php echo $lname; ?>">
                 <br/><br/>
-                <span class="help-block"><?php echo $lname_err; ?></span> 
+                <span class="error"><?php echo $lname_err."<br/><br/>"; ?></span> 
                 
                 <label>Password</label>
                 <br/><br/>
                 <input type="password" class="input-box" name="password" value="<?php echo $password; ?>">
                 <br/><br/>
-                <span class="help-block"><?php echo $password_err; ?></span>
+                <span class="error"><?php echo $password_err."<br/><br/>"; ?></span>
                 
                 <label>Confirm Password</label>
                 <br/><br/>
                 <input type="password" class="input-box" name="confirm_password" value="<?php echo $confirm_password; ?>">
                 <br/><br/>
-                <span class="help-block"><?php echo $confirm_password_err; ?></span>
+                <span class="error"><?php echo $confirm_password_err."<br/><br/>"; ?></span>
 
                 <input type="submit" class="btn-login" value="Submit">
                 <input type="reset" class="btn-login" value="Reset">
