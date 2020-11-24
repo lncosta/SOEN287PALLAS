@@ -26,13 +26,13 @@ $result = mysqli_query($conn, $query);
         <style type="text/css">
 
             body{
-                background-image: url(media/images/pattern2.jpg);
+                background-color: #fff;
+                text-align: center;
             }
             footer{
                 background-color: #fff;
             }        
             main{
-                color: white;
                 padding: 20px;
                 font-size: 1.1em;
             }
@@ -52,17 +52,26 @@ $result = mysqli_query($conn, $query);
                 font-family: "Montserrat";
             }
             .quote{
-                border: 5px solid whitesmoke;
+                color: white;
+                background-image: url(media/images/pattern2.jpg);
+                border-radius: 5px;
                 text-align: left;
                 padding: 20px;
-                margin: 15px;
+                margin: 0 auto;
+                width: 65%;
+                box-shadow: 1px 2px 4px rgba(0,0,0,.3);
             }
-
+            .item{
+                padding-left: 30px;
+            }
             input, textarea{
                 border-radius: 10px;
                 font-size: 1em;
                 border: 2px solid whitesmoke;
                 font-family: "Montserrat";
+            }
+            textarea{
+                width: 100%;
             }
 
 
@@ -270,41 +279,68 @@ $result = mysqli_query($conn, $query);
         </section>
     
     <main>
-        <h1>Contact us!</h1>
-        <p class="colortext">Fill in the form below for a quote estimation, or send us a message in one of our many channels.</p>
+        <h2>Contact us!</h2>
+        <h3>Fill in the form below for a quote estimation, or send us a message in one of our many channels.</h3>
 
         <div class ="quote">
             <form id="myform" action="saveform.php" method="post">
-                <label>Name:</label>
-                <input type="text" id="fname" name="fname" placeholder="First Name"/>
-                <input type="text" id="lname" name="lname" placeholder="Last Name"/>
-                <br/>
-                <br/>
-                <label>Email Address:</label>
-                <input type="text" id="email" name="email" placeholder="email@address.com"/>
-                <br/>
-                <br/>
-                <label>Phone Number:</label>
-                <input type="number" id="phone" name="phone" placeholder="123-456-7890"/>
-                <br/>
-                <br/>
-                <label>Event Date:</label> <!--Check if available-->
-                <!--<input type="date" id="eventdate" name="date"/>-->
-                <input type="text" name="date" id="eventdate" placeholder="dd/mm/yyyy"/>
-                <br/>
-                <br/>
-                <label>Event Type:</label>
-                <select name="eventtype" id="eventtypes">
-                    <option value="intimate">Intimate - birthdays, family celebrations, or less than 10 people</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
-                    <option value="public">Public</option>
-                </select>
-                <br/>
-                <br/>
-                <label>Budget:</label>
-                <input type="number" id="budget" name="budget"min="1" step="any" placeholder="$$$.$$"/>
-                <br/>
+                <table>
+                    <tr>
+                        <td>
+                            <label>Name:</label>
+                        </td>
+                        <td class="item">
+                        <input type="text" id="fname" name="fname" placeholder="First Name"/>
+                        <input type="text" id="lname" name="lname" placeholder="Last Name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <label>Email Address:</label>
+                        </td>
+                        <td class="item">
+                            <input type="text" id="email" name="email" placeholder="email@address.com"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <label>Phone Number:</label>
+                        </td>
+                        <td class="item">
+                            <input type="number" id="phone" name="phone" placeholder="123-456-7890"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <label>Event Date:</label> <!--Check if available-->
+                        </td>
+                        <td class="item">
+                            <!--<input type="date" id="eventdate" name="date"/>-->
+                            <input type="text" name="date" id="eventdate" placeholder="dd/mm/yyyy"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <label>Event Type:</label>
+                        </td>
+                        <td class="item">
+                        <select name="eventtype" id="eventtypes">
+                            <option value="intimate">Intimate</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                            <option value="public">Public</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                            <label>Budget:</label>
+                        </td>
+                        <td class="item">
+                            <input type="number" id="budget" name="budget"min="1" step="any" placeholder="$$$.$$"/>
+                        </td>
+                    </tr>
+                </table>
                 <br/>
                 <label>Check which of our acts you want us to perform:</label> 
                 <br/>
