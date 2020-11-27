@@ -2,122 +2,163 @@
 <html>
     <head>
         <link rel = "stylesheet" type = "text/css" href = "Fancy.css"/>
+        <script>
+            function increment(){
+                
+                var value = parseInt(document.getElementById("ticket_quantity").value);
+                
+                value = isNaN(value) ? 0 : value;
+                value++;
+                document.getElementById("ticket_quantity").value = value;
+            }
+            function decrement(){
+                var value = parseInt(document.getElementById("ticket_quantity").value);
+                value = isNaN(value) ? 0 : value;
+                value--;
+                if(value <=0){
+                    value = 0;
+                }
+                document.getElementById("ticket_quantity").value = value;
+            }
+        </script>
     </head>
 
     <body>
         <h1>Express Checkout</h1>
-    <form>
-        <table>
-        <tr>
-            <th colspan  = 2>Billing Address</th>
-            <th>Payment</th>
-        </tr>
-        <tr>
-            <td><label>First name</label>
-            <br> <input class = "card" type ="text" name = "first">
-            </td>
-            <td>Last name
-            <br> <input type ="text" name = "last">
-            </td>
-            <form>
-                <td>
-                    <br>
-                  <div class = border>
-                    <label>
-                    <input class = "center" type = "radio" name = "type" >
-                    <br>
-                    <div class = "center">
-                        Credit Card
-                    </div>
-                    </label>
-                </div>
-                    </td>
-                
-                    <td style = "width:165px;">
+        <form name = "checkout_form" method = "POST" action = "MailTest.php">
+            <table>
+            <tr>
+                <th colspan  = 2>Billing Address</th>
+                <th colspan =2 >Payment</th>
+                <th>Cart</th>
+            </tr>
+            <tr>
+                <td><label>First name</label>
+                <br> <input class = "card" type ="text" name = "first_name">
+                </td>
+                <td>Last name
+                <br> <input type ="text" name = "last_name">
+                </td>
+               
+                    <td>
                         <br>
-                        <div class = "border">
+                      <div class = border>
                         <label>
-                            <input class = "center" type = "radio" name = "type">
-                            
-                            <div class = "center"> Paypal</div>
+                        <input class = "center" type = "radio" name = "card_type" >
+                        <br>
+                        <div class = "center">
+                            Credit Card
+                        </div>
                         </label>
                     </div>
-                    </td>
-            </form>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <label>Company name</label>
-            </br>
-                <input type = "text" name = "Company">
-            </td>
-            <td colspan = "2">
-                <fieldset class = "card">
-                            <legend>Card Number</legend>
-                            <input class = "none" type = 'text' name = cardNum>
-                </fieldset>
-            </td>
-        </tr>
-        <tr>
-            <td colspan = 2>
-                <label>Country</label>
-            </br>
-                <select name = "country">
-                    <option value = "Argentina">Argentina</option>
-                    <option value = "Canada">Canada</option>
-                    <option value = "United States">United States</option>
-                </select>
-            </td>
-            <td colspan = 2>
-                <fieldset class = "card">
-                    <div class = "user">
-                    <input class= "none" type = "text" name = "cardName" placeholder="Cardholder Name">
-                    <!--REMEMBER TO CHANGE-->
-                </div>
-                </fieldset>
-
-            </td>
-        </tr>
-        <tr>
-            <td colspan = "2">
-                <label>Street Address</label>
-                <br>
-                <input type = "text" name = "street" placeholder = "House number and street name">
-            </td>
-            <td>
-                <div class = "exp">
-                    <input class="exp" type = "type" name = expiration placeholder="Expiration Date" onfocus = "(this.type = 'date')">
-                </div>
-            </td>
-            <td>
-                <div class = "exp">
-                    <input class = "exp" type = "text" name = "CVV" placeholder = "CVV" maxlength="3">
-                </div>
-            </td>
-        </tr>
-        <tr>
-       
-            <td>
-            <label>Town/City</label>
-            <br>
-            <input class = "two" type = "text" name = "city">
-        </td>
-        <td>
-            <label>Postal Code</label>
-            <br>
-            <input type = "text" name = "postal">
-         </td>
-
-        </tr>
-        </table>
+                        </td>
+                        <td style = "width:165px;">
+                            <br>
+                            <div class = "border">
+                            <label>
+                                <input class = "center" type = "radio" name = "card_type">
+                                
+                                <div class = "center"> Paypal</div>
+                            </label>
+                        </div>
+                        </td>
+                        <td rowspan =5 style = " margin-left: 20px;  width: auto; height: auto; border: solid black 2px;"> 
+                        <div class = "item">
+                            <img style = "cursor: pointer;" src = "/media/images/meat.png" width = 25px height = 25px>
     
-    </table>
-        
-            
-
-
+                    
+                            <div class = "inner-container">
+                            <div class = "minus"><button class = "dec"  onclick = decrement() type = button></button></div>
+                            <span class = "quantity"><input value = "0" id = "ticket_quantity" class = "quantity" type = "text"></span>
+                            <div class = "plus"><button class = "inc" type = button onclick = increment()></button></div>
+                            <p style = " width: 100%; text-align: center;">Show Name</p>
+                            <img style = "text-align: center;" src = "media/images/Bubbles.png" width = 190px height= 150px;> 
+                            <div id = "price" class = price>
+                            <ul style = "margin-top:0;">
+                                <li style = "width: 100px;">
+                                    Price: <text>test</text>    
+                                </li>
+                                <li>
+                                    Tax: <text>test</text>
+                                </li>
+                            </ul> </div>
+                            <div style = "width: 200px;"><text>Subtotal :<text>test</text></div>
+                            <input name = "submit" type = "submit" size = 100px value = "Checkout">
+                        </div>
+                        </div> </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label>Email</label>
+                </br>
+                    <input type = "text" name = "email">
+                </td>
+                <td colspan = "2">
+                    <fieldset style = "padding: 15px;" class = "card">
+                                <legend>Card Number</legend>
+                                <input class = "none" type = 'text' name = card_number>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td colspan = 2>
+                    <label>Country</label>
+                </br>
+                    <select name = "country">
+                        <option value = "Argentina">Argentina</option>
+                        <option value = "Canada">Canada</option>
+                        <option value = "United States">United States</option>
+                    </select>
+                </td>
+                <td colspan = 2>
+                    <fieldset class = "card">
+                        <div class = "user">
+                        <input class= "none" type = "text" name = "cardholder_name" placeholder="Cardholder Name">
+                        <!--REMEMBER TO CHANGE-->
+                    </div>
+                    </fieldset>
+    
+                </td>
+            </tr>
+            <tr>
+                <td colspan = "2">
+                    <label>Street Address</label>
+                    <br>
+                    <input type = "text" name = "street_address" placeholder = "House number and street name">
+                </td>
+                <td>
+                    <div class = "exp">
+                        <input class="exp" type = "type" name = "expiration_date" placeholder="Expiration Date" onfocus = "(this.type = 'date')">
+                    </div>
+                </td>
+                <td>
+                    <div class = "exp">
+                        <input class = "exp" type = "text" name = "CVV" placeholder = "CVV" maxlength="3">
+                    </div>
+                </td>
+            </tr>
+            <tr>
            
-    </form>
-
+                <td>
+                <label>Town/City</label>
+                <br>
+                <input class = "two" type = "text" name = "city">
+            </td>
+            <td>
+                <label>Postal Code</label>
+                <br>
+                <input type = "text" name = "postal_code">
+             </td>
+    
+            </tr>
+            </table>
+        
+        </table>
+            
+                
+    
+    
+               
+        </form></p>
     </body>
 </html>
