@@ -1,6 +1,4 @@
-select{
-    width: 360px;
-}
+
 th{
     text-align: left;
 }
@@ -18,6 +16,7 @@ table{
     border-spacing: 10px;
 }
 select{
+    width: 360px;
     border-width: 2px;
     height:30px;
     border-color: rgb(214, 214, 214); 
@@ -86,6 +85,72 @@ input.exp{
 }
 textarea:focus, input:focus{
     outline: none;
+}
+div.item{
+   display: inline-block;
+   
+    width: auto;
+    height: auto;
+    min-height: 35px;
+    min-width: 200px;
+}
+div.minus{
+    margin: 3px;
+    float: left;
+}
+span.quantity{
+    
+    font-size: 25px;
+    margin: 5px;
+    margin-top: 30px;
+}
+div.plus{
+    margin: 3px;
+    float: right;
+}
+div.inner-container{
+    max-height: 20px;
+    padding: 5px;
+    width:120px;
+}
+input.quantity{
+    width: 30px;
+    border-radius: 0;
+    border-width: 1;
+    border-color: black;
+    text-align: center;
+}
+button.dec{
+    width: 30px;
+    height: 30px;
+    background-image: url("/media/images/minus.png");
+    background-size: contain;
+    background-color: white;
+    border-width: 0;
+    cursor: pointer;
+
+}
+button.inc{
+    width: 30px;
+    height: 30px;
+    background-image: url("/media/images/plus.png");
+    background-size: contain;
+    background-color: white;
+    border-width: 0;
+    cursor: pointer;
+}
+div.price{
+    
+    width:100%;
+    height:50px;
+    left: 0;
+
+}
+.hamburger{
+    background-image: url("/media/images/meat.png");
+    object-fit: contain;
+    width: 20px;
+    height:20px;
 }
 
 
