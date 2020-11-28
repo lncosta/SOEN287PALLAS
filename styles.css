@@ -1,7 +1,9 @@
 body{
     text-align: center;
     font-family: "Montserrat";
-    margin:0px;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 }
 
 h2{
@@ -24,6 +26,50 @@ p{
     line-height: 1.5;
 }
 
+/*----------------------------------*/
+/*Grid*/
+.grid-row{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.column,.column-large{
+    width: 100%;
+}
+
+@media(min-width: 992px){
+.column{
+    max-width: 30%;
+    margin: 0 -1%;
+    position: relative;
+}
+
+.column-large{
+    width: 40%;
+    margin: 0 2%;
+    padding: 0 3%;
+}
+}
+
+/*-------------------------------*/
+/*Card*/
+.display-card{
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.display-card-header{
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.display-card-body{
+    padding: 5%;
+}
+
 /*------------------------------*/
 /*Text*/
 .big-heading{
@@ -33,12 +79,37 @@ p{
     margin-bottom: 50px;
 }
 
-.book-btn{
-    margin: 5% 3% 5% 0;
+
+/*----------------------------*/
+/*Buttons*/
+.large-button{
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
 }
 
-.container-fluid{
-    padding: 3% 7%;
+.dark-button{
+background-color: #343a40;
+border: 1px solid #343a40;
+color: white;
+}
+
+.dark-button:hover{
+    background-color: black;
+}
+
+.fit-button{
+    display: block;
+    width: 100%;
+}
+
+
+/*-------------------------------------*/
+
+.container{
+    display: block;
+    padding: 1% 7%;
 }
 
 /*----------------------------------*/
@@ -146,7 +217,7 @@ main {
 }
 
 .gathering-box ,.feature-box{
-    padding: 5%;
+    padding: 3% 2%;
 }
 
 .gathering-icon ,.feature-icon{
@@ -191,11 +262,87 @@ main {
     line-height: 1.5;
 }
 
+/*---------------------------------------------------*/
+/*Carousel*/
+.slideshow-container {
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  .prev{
+      position: absolute;
+        top: 40%;
+        left: 3%;
+  }
+
+  .next{
+      position: absolute;
+      top: 40%;
+      right: 3%;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position:
+    absolute;
+    bottom: 8px;
+    width: 84%;
+    text-align: center;
+  }
+
+  .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+  
+
+
+
+
 /*----------------------------------------------*/
 /*Footer*/
 .footer-icon{
     margin: 20px 10px;
 }
+
+
 
 /*Modal*/
 

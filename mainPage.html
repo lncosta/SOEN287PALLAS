@@ -21,14 +21,6 @@
       rel="stylesheet"
     />
 
-    <!--Bootstrap-->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-
     <!--Manual CSS-->
     <link rel="stylesheet" href="styles.css" />
 
@@ -38,27 +30,11 @@
       crossorigin="anonymous"
     ></script>
 
-    <!--Javascript and JQuery-->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
-    ></script>
   </head>
 
   <body>
     <section class="colored-section" id="title">
-      <div class="container-fluid">
+      <div class="container">
         <!--NavBar-->
            <nav class="navbar navbar-expand-lg navbar-dark">
                 <a class="navbar-brand" href="mainPage.html">Pallas</a>
@@ -96,12 +72,12 @@
                   </ul>
                 </div>
               </nav>
-        <div class="row">
-        <div class="col-lg-6">
+        <div class="grid-row">
+        <div class="column-large">
           <h1 class="big-heading">
             Making your Celebrations, Amazing and Perfect.
         </div>
-        <div class="col-lg-6">
+        <div class="column-large">
             <img class="title-image" src="http://bubble-entertainment.com/wp-content/uploads/2017/05/IMG_1554-300x225.jpg" alt="">
         </div>
         </div>
@@ -110,23 +86,23 @@
 
     <!--Gathering-->
     <section class="white-section" id="gatherings">
-        <div class="container-fluid">
+        <div class="container">
       <h2 class="section-heading">Make Lifetime Memories</h2>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-4 gathering-box">
+      <div class="container">
+        <div class="grid-row">
+          <div class="column gathering-box">
             <i class="gathering-icon fas fa-birthday-cake fa-4x"></i>
             <h3 class="gathering-title">Birthday Parties</h3>
             <p>Theme Based Birthday Parties with gathering up to 50 People.</p>
           </div>
 
-          <div class="col-lg-4 gathering-box">
+          <div class="column gathering-box">
             <i class="gathering-icon fas fa-gifts fa-4x"></i>
             <h3 class="gathering-title">Weddings</h3>
             <p>Make your special day a memorable one.</p>
           </div>
 
-          <div class="col-lg-4 gathering-box">
+          <div class="column gathering-box">
             <i class="gathering-icon fas fa-glass-cheers fa-4x"></i>
             <h3 class="gathering-title">Other Celebrations</h3>
             <p>
@@ -139,55 +115,37 @@
       </div>
     </section>
 
-    <!--Performances Section-->
+    <!--Performances Section--><!--Carousel-->
     <section class="colored-section" id="performances">
-      <div id="performances-carousel" class="carousel slide" data-ride="false">
-        <div class="carousel-inner">
-          <div class="carousel-item active container-fluid">
+        <div class="slideshow-container">
+          <div class="mySlide1 fade active container">
             <h2 class="testimonial-text">Bubble Show</h2>
-            <em>Performer 1</em>
+            <div class="text">Performer 1</div>
           </div>
-          <div class="carousel-item container-fluid">
+          <div class="mySlide1 fade container">
             <h2 class="testimonial-text">Magic Show</h2>
-            <em>Performer 2</em>
+            <div class="text">Performer 2</div>
           </div>
-          <div class="carousel-item container-fluid">
+          <div class="mySlide1 fade container">
             <h2 class="testimonial-text">Musical Performance</h2>
-            <em>Performer 2</em>
+            <div class="text">Performer 2</div>
           </div>
-        </div>
-        <a
-          class="carousel-control-prev"
-          href="#performances-carousel"
-          role="button"
-          data-slide="prev"
-        >
-          <span class="carousel-control-prev-icon"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a
-          class="carousel-control-next"
-          href="#performances-carousel"
-          role="button"
-          data-slide="next"
-        >
-          <span class="carousel-control-next-icon"></span>
-          <span class="sr-only">Next</span>
-        </a>
+          <a class="prev" onclick="plusSlides(-1,0)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1,0)">&#10095;</a>
       </div>
     </section>
 
     <!--Features Section-->
     <section class="white-section" id="features">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-4 feature-box">
+      <div class="container">
+        <div class="grid-row">
+          <div class="column feature-box">
             <i class="feature-icon fas fa-check-circle fa-4x"></i>
             <h3 class="feature-title">Easy to Book.</h3>
             <p>Book now for Great Performances at your Parties.</p>
           </div>
 
-          <div class="col-lg-4 feature-box">
+          <div class="column feature-box">
             <i class="feature-icon fas fa-bullseye fa-4x"></i>
             <h3 class="feature-title">Elite Performers</h3>
             <p>
@@ -195,7 +153,7 @@
             </p>
           </div>
 
-          <div class="col-lg-4 feature-box">
+          <div class="column feature-box">
             <i class="feature-icon fas fa-hand-holding-usd fa-4x"></i>
             <h3 class="feature-title">Reasonable Prices</h3>
             <p>World Class Entertainment taking care of your Pocket.</p>
@@ -204,107 +162,93 @@
       </div>
     </section>
 
-    <!--Reviews Section-->
+    <!--Reviews Section--><!--Carousel-->
     <section class="colored-section" id="reviews">
-        <div id="reviews-carousel" class="carousel slide" data-ride="false">
-            <div class="carousel-inner">
-              <div class="carousel-item active container-fluid">
+            <div class="slideshow-container">
+              <div class="mySlide2 fade container">
                 <h2 class="review-text">Excellent performers. Would love to book them for another celebration.</h2>
                 <img class="review-image" src="media/images/piyush_profile.png" alt="">
-                <em>Piyush Goyal</em>
+                <div class="text">Piyush Goyal</div>
               </div>
-              <div class="carousel-item container-fluid">
+              <div class="mySlide2 fade container">
                 <h2 class="review-text">Review 2</h2>
-                <em>Reviewer 2</em>
+                <img class="review-image" src="media/images/piyush_profile.png" alt="">
+                <div class="text">Reviewer 2</div>
               </div>
-              <div class="carousel-item container-fluid">
+              <div class="mySlide2 fade container">
                 <h2 class="review-text">Review 3</h2>
-                <em>Reviewer 3</em>
+                <img class="review-image" src="media/images/piyush_profile.png" alt="">
+                <div class="text">Reviewer 3</div>
               </div>
+              <a class="prev" onclick="plusSlides(-1,1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1,1)">&#10095;</a>
             </div>
-            <a
-              class="carousel-control-prev"
-              href="#reviews-carousel"
-              role="button"
-              data-slide="prev"
-            >
-              <span class="carousel-control-prev-icon"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a
-              class="carousel-control-next"
-              href="#reviews-carousel"
-              role="button"
-              data-slide="next"
-            >
-              <span class="carousel-control-next-icon"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
     </section>
 
     <!-- Pricing -->
     <section class="white-section" id="pricing">
       <h2 class="section-heading">Packages for Every Parties' Needs</h2>
       <p>Simple and affordable price plans for your Parties.</p>
-      <div class="row">
-        <div class="col-lg-4 col-md-6 pricing-column">
-          <div class="card">
-            <div class="card-header"><h3>Bronze Package</h3></div>
-            <div class="card-body">
+      <div class="container">
+      <div class="grid-row">
+        <div class="column pricing-column">
+          <div class="display-card">
+            <div class="display-card-header"><h3>Bronze Package</h3></div>
+            <div class="display-card-body">
               <h2 class="price-text">$</h2>
               <p>Any 1 Performance</p>
               <p>Personalized Greetings</p>
-              <p>*Choose any one of 3 Performances</p>
+              <p>*Choose any 1 Performance</p>
               <p>*You can customize the Greetings.</p>
-              <button type="button" class="btn btn-lg btn-block btn-dark">
+              <button type="button" class="large-button dark-button fit-button">
                 Book Now
               </button>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 pricing-column">
-          <div class="card">
-            <div class="card-header"><h3>Gold Package</h3></div>
-            <div class="card-body">
+        <div class="column pricing-column">
+          <div class="display-card">
+            <div class="display-card-header"><h3>Gold Package</h3></div>
+            <div class="display-card-body">
               <h2 class="price-text">$</h2>
               <p>2 Performances</p>
               <p>Personalized Greetings</p>
               <p>Kids Show</p>
               <p>*You can customize the Greetings.</p>
-              <button type="button" class="btn btn-lg btn-block btn-dark">
+              <button type="button" class="large-button dark-button fit-button">
                 Book Now
               </button>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-4 pricing-column">
-          <div class="card">
-            <div class="card-header"><h3>Diamond Package</h3></div>
-            <div class="card-body">
+        <div class="column pricing-column">
+          <div class="display-card">
+            <div class="display-card-header"><h3>Diamond Pack</h3></div>
+            <div class="display-card-body">
               <h2 class="price-text">$</h2>
               <p>All 3 Performances</p>
               <p>Personalized Greetings</p>
               <p>Kids Show</p>
-              <p>A Special Surprise Performance</p>
-              <button type="button" class="btn btn-lg btn-block btn-dark">
+              <p>*A Special Surprise Performance</p>
+              <button type="button" class="large-button dark-button fit-button">
                 Book Now
               </button>
             </div>
           </div>
         </div>
       </div>
+      </div>
     </section>
 
     <!--Tagline-->
     <section class="colored-section" id="tagline">
-      <div class="container-fluid">
+      <div class="container">
         <h3 class="big-heading">
           Great Performance at your Parties!! Just a Click away.
         </h3>
-        <button type="button" class="btn btn-dark btn-lg book-btn">
+        <button type="button" class="large-button dark-button">
           Book Now
         </button>
       </div>
@@ -312,7 +256,7 @@
 
     <!-- Footer -->
     <footer class="white-section" id="footer">
-      <div class="container-fluid">
+      <div class="container">
         <i class="footer-icon fab fa-twitter"></i>
         <i class="footer-icon fab fa-facebook-f"></i>
         <i class="footer-icon fab fa-instagram"></i>
@@ -321,4 +265,27 @@
       </div>
     </footer>
   </body>
+
+  <script type="text/javascript">
+    var slideIndex = [1,1];
+var slideId = ["mySlide1", "mySlide2"]
+showSlides(1, 0);
+showSlides(1, 1);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+}
+  </script>
+
 </html>
