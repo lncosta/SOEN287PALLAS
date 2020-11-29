@@ -3,7 +3,7 @@
     <div class="interiornav">
         <ul class="navigation" id="navmenu">
             <li class="item">
-                <a class="link" href="mainPage.html"><span class="navbar-brand">PALLAS</span></a>
+                <a class="link" href="mainpage.php"><span class="navbar-brand">PALLAS</span></a>
             </li>
             <li class="item">
                 <a class="link" href="ticketsales.php">Upcoming Performances</a>
