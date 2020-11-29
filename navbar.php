@@ -12,13 +12,13 @@
                 <a class="link" href="contactform.php">Contact + Booking</a>
             </li>
             <li class="item">
-                <a class="link" href="aboutpage.html">About</a>
+                <a class="link" href="aboutpage.php">About</a>
             </li>
             <li class="item">
                 <a class="link" href="performancearchive.php">Performance Gallery</a>
             </li>
             <li class="item">
-                <a class="link" href="faq.html">FAQ</a>
+                <a class="link" href="faq.php">FAQ</a>
             </li>
             <li class="item">
                 <a class="link" href="userpage.php">User's Page</a>
