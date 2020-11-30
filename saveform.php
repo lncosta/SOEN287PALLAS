@@ -1,15 +1,12 @@
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
 $link = mysqli_connect("localhost", "root", "", "demo");
- 
 // Check connection
-if($link === false){
+if ($link === false) {
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
- 
+
 // Escape user inputs for security
- 
+
 $param_email =  mysqli_real_escape_string($link, $_REQUEST['email']);
 $param_fname =  mysqli_real_escape_string($link, $_REQUEST['fname']);
 $param_lname =  mysqli_real_escape_string($link, $_REQUEST['lname']);
@@ -23,57 +20,56 @@ $param_quote =  mysqli_real_escape_string($link, $_REQUEST['quote']);
 $param_message =  mysqli_real_escape_string($link, $_REQUEST['message']);
 // Attempt insert query execution
 $sql = "INSERT INTO quoteform (email, fname, lname, phone, date, eventtype, budget, services, optionals, quote, message) VALUES ('$param_email', '$param_fname', '$param_lname', '$param_phone', '$param_date ', '$param_eventtype', '$param_budget', '$param_services', '$param_optionals', '$param_quote', '$param_message')";
-if(mysqli_query($link, $sql)){
+if (mysqli_query($link, $sql)) {
     echo "Records added successfully.";
-} else{
+} else {
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
 
-
+//Send confirmation email:
 $to_email = $param_email;
 $subject = "Pallas Entertainment - Your Quote Estimation";
-$body = "Hi, ".$param_fname.".\nHere's the quote for your event on ".$param_date.".\nName: ".$param_fname." ".$param_lname."."."\nPhone: ".$param_phone."."."\nType: ".$param_eventtype."."."\nPerformances: ".$param_services.".".
-"\nOptional Services: ".$param_optionals.".".
-"\nBudget: ".$param_budget.".".
-"\nAdditional Requests: ".$param_message.".".
-"\nQuote: $".$param_quote.".00.".
-"\nOne of our representatives will reach out to you soon to discuss your event. In the meantime, you can contact us through of our many channels. \nThank you for choosing PALLAS!. \n-The PALLAS team."
-;
+$body = "Hi, " . $param_fname . ".\nHere's the quote for your event on " . $param_date . ".\nName: " . $param_fname . " " . $param_lname . "." . "\nPhone: " . $param_phone . "." . "\nType: " . $param_eventtype . "." . "\nPerformances: " . $param_services . "." .
+    "\nOptional Services: " . $param_optionals . "." .
+    "\nBudget: " . $param_budget . "." .
+    "\nAdditional Requests: " . $param_message . "." .
+    "\nQuote: $" . $param_quote . ".00." .
+    "\nOne of our representatives will reach out to you soon to discuss your event. In the meantime, you can contact us through of our many channels. \nThank you for choosing PALLAS!. \n-The PALLAS team.";
 $headers = "From: PALLAS";
- 
+
 if (mail($to_email, $subject, $body, $headers)) {
     echo "Email successfully sent to $to_email...";
 } else {
     echo "Email sending failed...";
 }
- 
+
 // Close connection
 mysqli_close($link);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
     <!--Google Fonts-->
     <!--Luckiest Guy || Montserrat-->
-    <link
-    href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@400;700;900&display=swap"
-    rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
 
-    
+
     <style type="text/css">
-        body{
+        body {
             margin: 20px;
         }
-        .mail{
+
+        .mail {
             margin: 20px;
             padding: 20px;
             text-align: left;
             border: 2px solid blue;
         }
-        .btn{
+
+        .btn {
             background-color: lightblue;
             border: 5px solid lightblue;
             border-radius: 5px;
@@ -81,57 +77,29 @@ mysqli_close($link);
             text-decoration: none;
 
         }
-        .btn a{
+
+        .btn a {
             color: black;
 
         }
-       
     </style>
     <!--Manual CSS-->
     <link rel="stylesheet" href="styles.css" />
 
     <!--Icons-->
-    <script
-    src="https://kit.fontawesome.com/ba7a137c00.js"
-    crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/ba7a137c00.js" crossorigin="anonymous"></script>
 
-     
-</head> 
+
+</head>
+
 <body>
-    <section class="navbarsection">  
-        <!--NavBar-->
-            <div class="interiornav">
-                <ul class="navigation" id="navmenu">
-                    <li class="item">
-                        <a class="link" href="mainPage.html"><span class="navbar-brand">PALLAS</span></a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="ticketsales.php">Upcoming Performances</a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="contactform.php">Contact + Booking</a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="aboutpage.html">About</a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="performancearchive.html">Performance Gallery</a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="faq.html">FAQ</a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="userpage.php">User's Page</a>
-                    </li>
-                </ul>
-            </div>
-    </section>
+    <?php include("navbar.php"); ?>
+    <!--Display form summary-->
     <div>
-        <br/>
+        <br />
         <h1>Hi, <b><?php echo $param_fname ?></b>. Your quote estimation has been sent to your email. Here is a summary of your request:</h1>
     </div>
-    <br/>
+    <br />
     <div class="mail">
         <h2>First Name: <b><?php echo $param_fname ?></b></h2>
         <h2>Last Name: <b><?php echo $param_lname ?></b></h2>
@@ -144,20 +112,21 @@ mysqli_close($link);
         <h2>Budget: <b><?php echo $param_budget ?></b></h2>
         <h2>Additional Requests: <b><?php echo $param_message ?></b></h2>
         <h2>Your Quote: $<b><?php echo $param_quote ?>.00</b></h2>
-    </div>  
-    <br/>
+    </div>
+    <br />
     <p>
-        <a href="mainpage.html" class="btn">Return to Home Page</a>
+        <a href="mainpage.php" class="btn">Return to Home Page</a>
     </p>
 
     <footer class="white-section" id="footer">
         <div class="container-fluid">
-          <i class="footer-icon fab fa-twitter"></i>
-          <i class="footer-icon fab fa-facebook-f"></i>
-          <i class="footer-icon fab fa-instagram"></i>
-          <i class="footer-icon fas fa-envelope"></i>
-          <p>© Copyright 2020 PALLAS Entertainment</p>
+            <i class="footer-icon fab fa-twitter"></i>
+            <i class="footer-icon fab fa-facebook-f"></i>
+            <i class="footer-icon fab fa-instagram"></i>
+            <i class="footer-icon fas fa-envelope"></i>
+            <p>© Copyright 2020 PALLAS Entertainment</p>
         </div>
-      </footer>
+    </footer>
 </body>
+
 </html>
