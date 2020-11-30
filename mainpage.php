@@ -1,8 +1,10 @@
 <?php
+session_start();
 include_once('connect.php');
 //Retrives reviews submitted by the users from another table:
 $newquery = "SELECT * FROM `reviews`";
 $newresult = mysqli_query($conn, $newquery);
+
 
 ?>
 <!DOCTYPE html>
@@ -87,12 +89,18 @@ $newresult = mysqli_query($conn, $newquery);
             }
             x[slideIndex[no] - 1].style.display = "block";
         }
+
+        function setDiscount() {
+            <?php $_SESSION["mainpage_discount"] = 10;?>
+
+            document.location.href = "contactform.php";
+        }
     </script>
 
 </head>
 
 <body>
-    <?php include("navbar.php");?>
+    <?php include("navbar.php"); ?>
     <section class="colored-section" id="title">
         <div class="container">
             <div class="grid-row">
@@ -145,15 +153,15 @@ $newresult = mysqli_query($conn, $newquery);
         <div class="slideshow-container">
             <div class="mySlide1 fade active container">
                 <h2 class="testimonial-text">Bubble Show</h2>
-                <div class="text">Performer 1</div>
+                <div class="text">Florian</div>
             </div>
             <div class="mySlide1 fade container">
                 <h2 class="testimonial-text">Magic Show</h2>
-                <div class="text">Performer 2</div>
+                <div class="text">Andre</div>
             </div>
             <div class="mySlide1 fade container">
                 <h2 class="testimonial-text">Musical Performance</h2>
-                <div class="text">Performer 2</div>
+                <div class="text">Clara</div>
             </div>
             <a class="prev" onclick="plusSlides(-1,0)">&#10094;</a>
             <a class="next" onclick="plusSlides(1,0)">&#10095;</a>
@@ -223,12 +231,12 @@ $newresult = mysqli_query($conn, $newquery);
                             <h3>Bronze Package</h3>
                         </div>
                         <div class="display-card-body">
-                            <h2 class="price-text">$</h2>
+                            <h2 class="price-text">$155.00</h2>
                             <p>Any 1 Performance</p>
                             <p>Personalized Greetings</p>
                             <p>*Choose any 1 Performance</p>
                             <p>*You can customize the Greetings.</p>
-                            <button type="button" class="dark-button">
+                            <button type="button" class="dark-button" onclick="setDiscount()">
                                 Book Now
                             </button>
                         </div>
@@ -241,12 +249,12 @@ $newresult = mysqli_query($conn, $newquery);
                             <h3>Gold Package</h3>
                         </div>
                         <div class="display-card-body">
-                            <h2 class="price-text">$</h2>
+                            <h2 class="price-text">$665.00</h2>
                             <p>2 Performances</p>
                             <p>Personalized Greetings</p>
                             <p>Kids Show</p>
                             <p>*You can customize the Greetings.</p>
-                            <button type="button" class="dark-button">
+                            <button type="button" class="dark-button" onclick="setDiscount()">
                                 Book Now
                             </button>
                         </div>
@@ -259,12 +267,12 @@ $newresult = mysqli_query($conn, $newquery);
                             <h3>Diamond Pack</h3>
                         </div>
                         <div class="display-card-body">
-                            <h2 class="price-text">$</h2>
+                            <h2 class="price-text">$675.00</h2>
                             <p>All 3 Performances</p>
                             <p>Personalized Greetings</p>
                             <p>Kids Show</p>
                             <p>*A Special Surprise Performance</p>
-                            <button type="button" class="dark-button">
+                            <button type="button" class="dark-button" onclick="setDiscount()">
                                 Book Now
                             </button>
                         </div>
@@ -280,7 +288,7 @@ $newresult = mysqli_query($conn, $newquery);
             <h3 class="big-heading">
                 Great Performance at your Parties!! Just a Click away.
             </h3>
-            <button type="button" class="dark-button">
+            <button type="button" class="dark-button" onclick="setDiscount()">
                 Book Now
             </button>
         </div>
