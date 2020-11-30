@@ -1,108 +1,51 @@
 <?php
 
-if(isset($_POST["reset-password-submit"])){
-        $selector =$_POST["selector"];
-        $validator =$_POST["validator"];
-        $password =$_POST["pwd"];
-        $passwordRepeat =$_POST["pwd-repeat"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //random generator
+    $str = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+    $str = str_shuffle($str);
+    $str = substr($str, 0, 10);
+    $password = $str; //Generate random pass
 
-        if(empty($password)||empty($passwordRepeat)){
-            header("Location:../create-new-password.php?newpwd=empty");
-            exit();
+    require_once "config.php"; //connect to the file of the database
 
-        }else if ($password != $passwordRepeat){
-            header("Location:../create-new-password.php?newpwd=empty");
-            exit();            
-        }
+    $userEmail = $_POST["email"];
 
-        $currentDate=date("U");
+    // Prepare an update statement
+    $sql = "UPDATE users SET password = ? WHERE email= ?";
 
-        require 'database.inc.php';//connect to the file of the database
+    if ($stmt = mysqli_prepare($link, $sql)) {
+        // Bind variables to the prepared statement as parameters
+        mysqli_stmt_bind_param($stmt, "ss", $param_password, $param_id);
 
-        $sql ="SELECT * FROM pwdReset WHERE pewResetSelector=? AND pewResetExpires >= ?";
-        $stmt= mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmt,$sql)){
-            echo "There was an error!";
-            exit();
-        }else{
-            mysqli_stmt_bind_param($stmt,"s",$selector,$currentDate);
-            mysqli_stmt_execute($stmt);
+        // Set parameters
+        $param_password = password_hash($password, PASSWORD_DEFAULT);
+        $param_id = $userEmail;
 
-            $result=mysqli_stmt_get_result($stmt);
-            if(!$row=mysqli_fetch_assoc($result)){
+        // Attempt to execute the prepared statement
+        if (mysqli_stmt_execute($stmt)) {
+            //Send confirmation email
+            $to_email = $userEmail;
+            $subject = "Pallas Entertainment - Your account password has been reset";
+            $body = "\nYour Pallas password has been reset!\n Your new password is:" . $password . "\n Please remember to log in and change your password to protect your account security.\nThank you for choosing PALLAS!\n-The PALLAS team.";
+            $headers = "From: PALLAS";
 
-                echo "You need to re-submit your reset request.";
-                exit();
-
-            }else{
-                $tokenBin = hex2bin($validator);
-                $tokenCheck = password_verify($tokenBin,$row["pewResetToken"]);
-
-                if($tokenCheck ===false){
-                    echo "You need to re-submit your reset request.";
-                    exit();
-                }elseif($tokenCheck===true){
-
-                    $tokenEmail=$row['pwdResetEmail'];
-
-                    $sql="SELECT * FROM users WHERE emailUsers=?;";
-                    $stmt= mysqli_stmt_init($conn);
-                    if(!mysqli_stmt_prepare($stmt,$sql)){
-                    echo "There was an error!";
-                    exit();
-                    }else{
-            mysqli_stmt_bind_param($stmt,"s",$tokenEmail);
-            mysqli_stmt_execute($stmt);
-
-            $result=mysqli_stmt_get_result($stmt);
-            if(!$row=mysqli_fetch_assoc($result)){
-
-                echo "There was an error occur.";
-                exit();
-
-            }else{
-
-
-                $sql="UPDATE users SET pwdUsers=? WHERE emailUsers=?";
-                $stmt= mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt,$sql)){
-                echo "There was an error!";
-                exit();
-                }else{
-                $newPwdHash = password_hash($passwordRepeat,PASSWORD_DEFAULT);
-                mysqli_stmt_bind_param($stmt,"ss",$newPwdHash,$tokenEmail);
-                mysqli_stmt_execute($stmt);
-
-                $sql ="DELETE FROM pwdReset WHERE pedResetEmail=?";
-                $stmt= mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt,$sql)){
-                    echo "There was an error!";
-                    exit();
-                }else{
-                    mysqli_stmt_bind_param($stmt,"s",$tokenEmail);
-                    mysqli_stmt_execute($stmt);
-                    header("Location: ../signup.php?newpwd=passwordupdated");//here it goes to signup page, but we can
-                                                                            //go anywhere
-                    //so insert in the signup page the following code
-                    /*
-                    <?php
-                    if(isset($_GET["newpwd"])){
-                        if($_GET["newpwd"]=="passwordupdated"){
-                            echo '<p class="signupsuccess"> Your password has been reset!</p>
-                        }
-                    }
-                    ?>
-                    */
-                }
+            if (mail($to_email, $subject, $body, $headers)) {
+                echo "Email successfully sent to $to_email...";
+            } else {
+                echo "Email failed.";
             }
-        }
+            // Redirect to login page
+            header("location: userpage.php");
+            // Password updated successfully. Destroy the session, and redirect to login page
+        } else {
+            echo "Oops! Something went wrong. Please try again later.";
         }
 
-                }
-            }
-        }
-}else{
-    header("location:../index.php");
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
+} else {
+    echo "Failed. Make sure you input the correct email.";
+    header("Location:../login.php"); //send the customer to some pages
 }
-
-?>
