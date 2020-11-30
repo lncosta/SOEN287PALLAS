@@ -1,0 +1,104 @@
+//In 'demo' database, create the following tables:
+
+CREATE TABLE `gallery` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `image_title` varchar(50) NOT NULL,
+ `image_description` varchar(255) NOT NULL,
+ `image_name` varchar(255) NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `email` (`image_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4
+
+
+CREATE TABLE `generalreviews` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `r5` int(11) NOT NULL,
+ `r4` int(11) NOT NULL,
+ `r3` int(11) NOT NULL,
+ `r2` int(11) NOT NULL,
+ `r1` int(11) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4
+
+performances	
+
+CREATE TABLE `performances` (
+ `id` int(11) NOT NULL,
+ `date` date NOT NULL,
+ `address` text NOT NULL,
+ `type` varchar(50) NOT NULL,
+ `bookeremail` varchar(50) NOT NULL,
+ `price` double NOT NULL,
+ `ticketprice` double NOT NULL,
+ `ticketstosell` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+
+quoteform	
+
+CREATE TABLE `quoteform` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `fname` varchar(50) NOT NULL,
+ `lname` varchar(50) NOT NULL,
+ `email` varchar(50) NOT NULL,
+ `phone` int(11) NOT NULL,
+ `date` date NOT NULL,
+ `eventtype` varchar(50) NOT NULL,
+ `budget` int(11) NOT NULL,
+ `services` varchar(250) NOT NULL,
+ `optionals` varchar(250) NOT NULL,
+ `message` varchar(250) NOT NULL,
+ `quote` int(11) NOT NULL,
+ `created_at` datetime DEFAULT current_timestamp(),
+ `paidfor` tinyint(1) NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `username` (`date`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4
+
+reviews	
+
+CREATE TABLE `reviews` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `email` varchar(50) NOT NULL,
+ `userreview` varchar(255) NOT NULL,
+ `rating` int(11) NOT NULL,
+ `created_at` datetime DEFAULT current_timestamp(),
+ `fname` varchar(50) NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4
+
+upcoming events	
+
+CREATE TABLE `upcoming events` (
+ `EventDate` date NOT NULL,
+ `EventLocation` text NOT NULL,
+ `EventPrice` int(11) NOT NULL,
+ `EntertainmentType` text NOT NULL,
+ `DiscountedEvent` text NOT NULL DEFAULT 'no',
+ `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+
+users	
+
+CREATE TABLE `users` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `email` varchar(50) NOT NULL,
+ `password` varchar(255) NOT NULL,
+ `fname` varchar(50) NOT NULL,
+ `lname` varchar(50) NOT NULL,
+ `created_at` datetime DEFAULT current_timestamp(),
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `username` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4
+
+//Insert the following statemets
+
+INSERT INTO `gallery` (`id`, `image_title`, `image_description`, `image_name`) VALUES
+(1, 'Bubble image 1', 'Bubble Fun', 'http://bubble-entertainment.com/wp-content/uploads/2017/05/300x225xIMG_1554-300x225.jpg.pagespeed.ic.8rsIJzV3VT.webp'),
+(2, 'Bubble image 2', 'Bubble Fun', 'http://bubble-entertainment.com/wp-content/uploads/2017/05/300x225xIMG_2083-2-300x225.jpg.pagespeed.ic.uIbmyr_qu5.webp'),
+(3, 'Bubble image 3', 'Bubble Fun', 'http://bubble-entertainment.com/wp-content/uploads/2017/05/300x225xIMG_1158-300x225.jpg.pagespeed.ic.dkDdTqdp8-.webp'),
+(4, 'Bubble image 4', 'Bubble Fun', 'http://bubble-entertainment.com/wp-content/uploads/2019/06/300x300x300x300xIMG_4571-300x300.jpg,Mic.XznKaXwoND.jpg.pagespeed.ic.vFUTBRezIU.webp'),
+(5, 'Bubble image 5', 'Bubble Fun', 'http://bubble-entertainment.com/wp-content/uploads/2017/09/300x225xIMG_1227-300x225.jpg.pagespeed.ic.zvoFu6RsIF.webp');
+
+INSERT INTO `generalreviews` (`id`, `r5`, `r4`, `r3`, `r2`, `r1`) VALUES
+(1, 254, 50, 25, 10, 2);
