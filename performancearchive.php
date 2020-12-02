@@ -14,8 +14,8 @@ include_once('connect.php');
 $query = "SELECT * FROM `generalreviews`";
 $result = mysqli_query($conn, $query);
 //Connects to database and retrives general review information:
-while ($rows = mysqli_fetch_assoc($result)) {//Assigns number of each review type to a variable.
-  $rev5 = $rows['r5']; 
+while ($rows = mysqli_fetch_assoc($result)) { //Assigns number of each review type to a variable.
+  $rev5 = $rows['r5'];
   $rev4 = $rows['r4'];
   $rev3 = $rows['r3'];
   $rev2 = $rows['r2'];
@@ -28,6 +28,7 @@ $newresult = mysqli_query($conn, $newquery);
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
 
@@ -56,7 +57,7 @@ $newresult = mysqli_query($conn, $newquery);
       box-shadow: 1px 4px 5px rgba(0, 0, 0, .3);
     }
 
-    #myEvaluation p{
+    #myEvaluation p {
       color: white;
     }
 
@@ -74,6 +75,10 @@ $newresult = mysqli_query($conn, $newquery);
     .reviewtable table {
       min-width: 88%;
       width: 88%;
+    }
+    .reviewtable td{
+      padding: 10px;
+      vertical-align: top;
     }
 
     .gallery {
@@ -183,6 +188,7 @@ $newresult = mysqli_query($conn, $newquery);
     }
 
     @media (max-width: 300px) {
+
       .side,
       .middle {
         width: 50%;
@@ -228,7 +234,7 @@ $newresult = mysqli_query($conn, $newquery);
       color: gold !important;
     }
 
-    .image{
+    .image {
       padding: 50px;
       width: 50%;
     }
@@ -247,35 +253,7 @@ $newresult = mysqli_query($conn, $newquery);
 </head>
 
 <body>
-  <section class="navbarsection">
-
-    <!--NavBar-->
-    <div class="interiornav">
-      <ul class="navigation">
-        <li class="item">
-          <a class="link" href="mainPage.html"><span class="navbar-brand">PALLAS</span></a>
-        </li>
-        <li class="item">
-          <a class="link" href="ticketsales.php">Upcoming Performances</a>
-        </li>
-        <li class="item">
-          <a class="link" href="contactform.php">Contact + Booking</a>
-        </li>
-        <li class="item">
-          <a class="link" href="aboutpage.html">About</a>
-        </li>
-        <li class="item">
-          <a class="link" href="performancearchive.php">Performance Gallery</a>
-        </li>
-        <li class="item">
-          <a class="link" href="faq.html">FAQ</a>
-        </li>
-        <li class="item">
-          <a class="link" href="userpage.php">User's Page</a>
-        </li>
-      </ul>
-    </div>
-  </section>
+  <?php include("navbar.php"); ?>
 
   <main>
     <h2>See what the public is saying:</h2>
@@ -295,7 +273,8 @@ $newresult = mysqli_query($conn, $newquery);
         <label for="r5">&#9733;</label>
       </div>
 
-      <p id="reviewResult"></p> <!--Shows number of reviews for each rating, taken from database-->
+      <p id="reviewResult"></p>
+      <!--Shows number of reviews for each rating, taken from database-->
       <div class="row">
         <div class="side">
           <div>5 star</div>
@@ -409,7 +388,7 @@ $newresult = mysqli_query($conn, $newquery);
             <th>Review</th>
           </tr>
           <?php
-          while ($newrows = mysqli_fetch_assoc($newresult)) {//Fetches user reviews from database and displays them in a table format:
+          while ($newrows = mysqli_fetch_assoc($newresult)) { //Fetches user reviews from database and displays them in a table format:
             if ($newrows['rating'] >= 4) { //Only displays reviews of 4 stars and above.
           ?>
               <tr>
@@ -427,7 +406,7 @@ $newresult = mysqli_query($conn, $newquery);
     <br />
     <br />
     <br />
-    <div align="center" class="gallery">
+    <div class="gallery">
       <h1>Entertainment you just can't miss! </h1>
       <br />
       <!-- Display the first entertainementvideo  -->
@@ -464,11 +443,11 @@ $newresult = mysqli_query($conn, $newquery);
         $galleryResultSet = mysqli_query($conn, $galleryQuery);
         $x = 1;
         while ($rows = mysqli_fetch_array($galleryResultSet)) { //Displays images, each in a new line.
-          ?>
+        ?>
           <li>
-            <a class="image-link" href="<?php echo $rows["image_name"]; ?>"><img  class="image" src="<?php echo $rows["image_name"]; ?>"/></a>
+            <a class="image-link" href="<?php echo $rows["image_name"]; ?>"><img class="image" src="<?php echo $rows["image_name"]; ?>" /></a>
           </li>
-          <?php
+        <?php
         }
         ?>
       </ul>
