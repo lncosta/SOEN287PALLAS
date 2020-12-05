@@ -6,6 +6,19 @@
     $result = mysqli_query($conn, $query);
     //echo "<br/>Success2";
 
+    $date ="";
+
+    if(array_key_exists('button', $_POST)){
+     // echo "This is the date: ".$_POST['date'];
+
+      session_start();
+      $_SESSION['date'] = $_POST['date'];
+      $_SESSION['location'] = $_POST['location'];
+      $_SESSION['price'] = $_POST['price'];
+      $_SESSION['type'] = $_POST['type'];
+      header('Location: checkout.php');
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -57,43 +70,23 @@
     <style>
         
         
-        /* The Modal (background) */
-        .modal {
-          display: none; /* Hidden by default */
-          position: fixed; /* Stay in place */
-          z-index: 1; /* Sit on top */
-          padding-top: 100px; /* Location of the box */
-          left: 0;
-          top: 0;
-          width: 100%; /* Full width */
-          height: 100%; /* Full height */
-          overflow: auto; /* Enable scroll if needed */
-          background-color: rgb(0,0,0); /* Fallback color */
-          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        .odd{
+          background-image: url("media/images/Pattern.jpg");
+          text-align: center;
+          color: white;
         }
-        
-        /* Modal Content */
-        .modal-content {
-          background-color: #fefefe;
-          margin: auto;
-          padding: 20px;
-          border: 1px solid #888;
-          width: 80%;
+        .even{
+          text-align: center;
+          border: solid rgba(123, 193, 250, 0.726) 2px;
         }
-        
-        /* The Close Button */
-        .close {
-          color: #aaaaaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
+        .buy{
+          padding-left: 4px;
+          padding-right: 4px;
+          transition: 1s;
         }
-        
-        .close:hover,
-        .close:focus {
-          color: #000;
-          text-decoration: none;
-          cursor: pointer;
+        .buy:hover{
+          background-image: url("media/images/Pattern.jpg");
+         color:white;
         }
         .eventstable{
          
@@ -174,12 +167,13 @@
             ?>
 
             <tr>
-              
-              <td> <?php echo $rows['EventDate']; ?> </td>
-              <td> <?php echo $rows['EventLocation']; ?> </td>
-              <td> <?php echo $rows['EventPrice']; ?>$ </td>
-              <td> <?php echo $rows['EntertainmentType']; ?> </td>
-              <td><button type="button" name="buy" onclick="">Buy Tickets</button></td>
+              <form method = "post">
+              <td> <input class = "odd" type = "text" id = "date" name = "date" value ="<?php echo $rows['EventDate']; ?>" readonly> </td>
+              <td> <input class = "even" type = "text" id = "location" name = "location" value ="<?php echo $rows['EventLocation']; ?>" readonly> </td>
+              <td> <input class = "odd" type = "text" id = "price" name = "price" value ="<?php echo $rows['EventPrice']; ?>" readonly>$ </td>
+              <td> <input class = "even" type = "text" id = "type" name = "type" value ="<?php echo $rows['EntertainmentType']; ?>" readonly> </td>
+              <td><button class = "buy" type="submit" name="button" value = "button">Buy Tickets</button></td>
+              </form>
 
 
             </tr>
