@@ -134,3 +134,80 @@ if (!$mail->send()) {
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <!--Google Fonts-->
+    <!--Luckiest Guy || Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+
+
+    <style type="text/css">
+        body {
+            margin: 20px;
+        }
+
+        .mail {
+            margin: 20px;
+            padding: 20px;
+            text-align: left;
+            border: 2px solid blue;
+        }
+
+        .btn {
+            background-color: lightblue;
+            border: 5px solid lightblue;
+            border-radius: 5px;
+            color: black;
+            text-decoration: none;
+
+        }
+
+        .btn a {
+            color: black;
+
+        }
+    </style>
+    <!--Manual CSS-->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!--Icons-->
+    <script src="https://kit.fontawesome.com/ba7a137c00.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <?php include("navbar.php"); ?>
+    <!--Display form summary-->
+    <div>
+        <br />
+    </div>
+    <br />
+    <div class="mail">
+        <h2>First Name: <b><?php echo $first_name ?></b></h2>
+        <h2>Last Name: <b><?php echo $last_name ?></b></h2>
+        <h2>Email: <b><?php echo $email ?></b></h2>
+
+    </div>
+    <br />
+    <p>
+        <a href="mainpage.php" class="btn">Return to Home Page</a>
+    </p>
+
+    <footer class="white-section" id="footer">
+        <div class="container-fluid">
+            <i class="footer-icon fab fa-twitter"></i>
+            <i class="footer-icon fab fa-facebook-f"></i>
+            <i class="footer-icon fab fa-instagram"></i>
+            <i class="footer-icon fas fa-envelope"></i>
+            <p>© Copyright 2020 PALLAS Entertainment</p>
+        </div>
+    </footer>
+</body>
+
+</html>
