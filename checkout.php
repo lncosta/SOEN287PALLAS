@@ -219,7 +219,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <form  name="checkout_form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <h1 style = "text-align: center;">Express Checkout</h1>
-        <table style = "margin-left: 21%; border: solid white 3px; border-radius: 8px;">
+        <table style = "margin-left: auto; margin-right:auto; border: solid white 3px; border-radius: 8px;">
             <tr>
                 <th style = "font-size: 23px;" colspan=2>Billing Address</th>
                 <th  style = "font-size: 23px;" colspan=2>Payment</th>
