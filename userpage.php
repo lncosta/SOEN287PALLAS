@@ -170,6 +170,9 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
             border-radius: 5px;
             text-decoration: none;
             font-style: "Montserrat";
+            font-weight: normal;
+            font-family: inherit;
+
         }
 
         .btnbuy {
@@ -180,6 +183,8 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
             text-decoration: none;
             font-style: "Montserrat";
             max-width: 75%;
+            font-family: inherit;
+
         }
 
         .btnregular {
@@ -190,6 +195,9 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
             text-decoration: none;
             font-style: "Montserrat";
             max-width: 75%;
+            font-weight: normal;
+            font-family: inherit;
+
         }
 
         .booked {
@@ -201,15 +209,22 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
         }
 
         .review {
-            text-align: center;
+            text-align: left;
             margin-right: auto;
             margin-left: auto;
-            width: 88%;
+            width: 95%;
             line-height: 40px;
         }
 
-        .review th {
-            text-align: center;
+        .review th,
+        .review td {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .offcenter {
+            width: 5%;
+            padding-left: 20px;
         }
 
         .stars {
@@ -258,6 +273,19 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
         .medium input {
             width: 40%;
         }
+
+        .booking {
+            overflow-y: scroll;
+            max-height: 400px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .booking th {
+            position: sticky;
+            top: 0;
+            background-color: white;
+        }
     </style>
     <!--Manual CSS-->
     <link rel="stylesheet" href="styles.css" />
@@ -287,7 +315,7 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
     <div>
         <!--Displaying discounted prices using session discount-->
         <h2>Special Prices, Just For You!</h2>
-        <div>
+        <div class="booking">
             <table class="booked">
                 <tr>
                     <th> Date </th>
@@ -342,7 +370,7 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
         </div>
         <h2>Your Tickets:</h2>
         <!--Displays all tickets bought by the user -->
-        <div>
+        <div class="booking">
             <table class="booked">
                 <tr>
                     <th> Date </th>
@@ -382,58 +410,60 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
         </div>
         <h2>Your Bookings:</h2>
         <!--Displays events booked by the user, as well as payment status -->
-        <table class="booked">
-            <tr>
-                <th>Date</th>
-                <th>Booked Acts</th>
-                <th>Optional Services </th>
-                <th>Total Price</th>
-                <th>Event Type</th>
-                <th>Payment Status</th>
-                <th>Tickets Sold </th>
-            </tr>
-            <?php
-            $publiccounter = 0;
-            while ($rows = mysqli_fetch_assoc($result)) {
-                if ($rows['email'] == $_SESSION["email"]) {
-            ?>
-                    <tr>
-                        <td> <?php echo $rows['date']; ?> </td>
-                        <td> <?php echo $rows['services']; ?> </td>
-                        <td> <?php echo $rows['optionals']; ?> </td>
-                        <td> $<?php echo $rows['quote']; ?>.00 </td>
-                        <td> <?php echo $rows['eventtype']; ?> </td>
-                        <?php
-                        if ($rows['eventtype'] == "public") {
-                            $publiccounter++;
-                        }
-                        ?>
-                        <td><?php
-                            if ($rows['paidfor']) {
-                                echo "Payment Fulfilled";
-                            } else {
-                                echo "Payment Pending";
+        <div class="booking">
+            <table class="booked">
+                <tr>
+                    <th>Date</th>
+                    <th>Booked Acts</th>
+                    <th>Optional Services </th>
+                    <th>Total Price</th>
+                    <th>Event Type</th>
+                    <th>Payment Status</th>
+                    <th>Tickets Sold </th>
+                </tr>
+                <?php
+                $publiccounter = 0;
+                while ($rows = mysqli_fetch_assoc($result)) {
+                    if ($rows['email'] == $_SESSION["email"]) {
+                ?>
+                        <tr>
+                            <td> <?php echo $rows['date']; ?> </td>
+                            <td> <?php echo $rows['services']; ?> </td>
+                            <td> <?php echo $rows['optionals']; ?> </td>
+                            <td> $<?php echo $rows['quote']; ?>.00 </td>
+                            <td> <?php echo $rows['eventtype']; ?> </td>
+                            <?php
+                            if ($rows['eventtype'] == "public") {
+                                $publiccounter++;
                             }
                             ?>
-                        </td>
-                        <?php
-                        $date = $rows['date'];
-                        $ticketcounter = 0;
-                        $query5 = "SELECT * FROM `ticketsale` where datebooked ='$date'";
-                        $result5 = mysqli_query($conn, $query5);
-                        while ($rows = mysqli_fetch_assoc($result5)) {
-                            $ticketcounter++;
-                        }
-                        ?>
-                        <td> <?php echo $ticketcounter; ?>
-                        <td>
-                    </tr>
-            <?php
+                            <td><?php
+                                if ($rows['paidfor']) {
+                                    echo "Payment Fulfilled";
+                                } else {
+                                    echo "Payment Pending";
+                                }
+                                ?>
+                            </td>
+                            <?php
+                            $date = $rows['date'];
+                            $ticketcounter = 0;
+                            $query5 = "SELECT * FROM `ticketsale` where datebooked ='$date'";
+                            $result5 = mysqli_query($conn, $query5);
+                            while ($rows = mysqli_fetch_assoc($result5)) {
+                                $ticketcounter++;
+                            }
+                            ?>
+                            <td> <?php echo $ticketcounter; ?>
+                            <td>
+                        </tr>
+                <?php
+                    }
                 }
-            }
-            ?>
+                ?>
 
-        </table>
+            </table>
+        </div>
         <h3>Add tickets for sale</h3>
         <!--Displays public events booked by user and gives the option of adding ticker for sale-->
         <p>
@@ -447,7 +477,7 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
         </p>
         <h2>Your Reviews:</h2>
         <!--Display user's reviews-->
-        <div id="reviews">
+        <div id="reviews" class="booking">
             <button type="button" class="btndefault" onclick="showModal()">Add Review</button>
             <?php //Retrives reviews submitted by the users from another table:
             $newquery = "SELECT * FROM `reviews` where email='$email'";
@@ -456,14 +486,14 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
             <div>
                 <table class="review">
                     <tr>
-                        <th>Rating</th>
+                        <th class="offcenter">Rating</th>
                         <th>Review</th>
                     </tr>
                     <?php
                     while ($newrows = mysqli_fetch_assoc($newresult)) { //Fetches user reviews from database and displays them in a table format:
                     ?>
                         <tr>
-                            <td> <?php echo $newrows['rating']; ?>/5 </td>
+                            <td class="offcenter"> <?php echo $newrows['rating']; ?>/5 </td>
                             <td> <?php echo $newrows['userreview']; ?> </td>
                         </tr>
                     <?php
@@ -473,11 +503,13 @@ if (array_key_exists('button', $_POST)) { //Re-directs user to checkout page wit
             </div>
         </div>
     </div>
-    <p>
-        <a href="logout.php" class="btndefault">Sign Out of Your Account</a>
-    </p>
-    <p>
+  
+    <p> <!--Reset Password-->
         <a href="resetpassword.php" class="btndefault">Reset Password</a>
+    </p>
+
+    <p> <!--Logging out-->
+        <a href="logout.php" class="btndefault">Sign Out of Your Account</a>
     </p>
     <!-- Modal for adding a review -->
     <div class="modal-div" id="myModal">
