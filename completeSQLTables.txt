@@ -91,6 +91,18 @@ CREATE TABLE `users` (
  UNIQUE KEY `username` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4
 
+videos
+
+CREATE TABLE `videogallery` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `video_title` varchar(50) NOT NULL,
+ `video_description` varchar(255) NOT NULL,
+ `video_source` varchar(255) NOT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `video` (`video_source`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4
+
+
 //Insert the following statemets
 
 INSERT INTO `gallery` (`id`, `image_title`, `image_description`, `image_name`) VALUES
@@ -102,3 +114,14 @@ INSERT INTO `gallery` (`id`, `image_title`, `image_description`, `image_name`) V
 
 INSERT INTO `generalreviews` (`id`, `r5`, `r4`, `r3`, `r2`, `r1`) VALUES
 (1, 254, 50, 25, 10, 2);
+
+INSERT INTO `videogallery` (`id`, `video_title`, `video_description`, `video_source`) VALUES
+(1, 'Video 1', 'Make your event', 'https://www.youtube.com/embed/5G8vX9OVbK8');
+
+INSERT INTO `videogallery` (`id`, `video_title`, `video_description`, `video_source`) VALUES
+(2, 'Video 2', 'Event Cityt Christmas', 'https://www.youtube.com/embed/804uNConaDg');
+
+
+INSERT INTO `videogallery` (`id`, `video_title`, `video_description`, `video_source`) VALUES
+(3, 'Video 3', 'Giant Soap Bubbles', 'https://www.youtube.com/embed/KvBlZENkF5E');
+

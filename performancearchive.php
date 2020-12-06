@@ -406,26 +406,24 @@ $newresult = mysqli_query($conn, $newquery);
     <br />
     <br />
     <br />
-    <div class="gallery">
+   <div class="gallery">
       <h1>Entertainment you just can't miss! </h1>
       <br />
-      <!-- Display the first entertainementvideo  -->
+      <!-- Display the title for video sectionementvideo  -->
       <h2> Below are videos of past events we participated in:</h2>
       <br />
-      <!-- Display the first entertainementvideo  -->
-      <iframe src="https://www.youtube.com/embed/5G8vX9OVbK8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      <!-- Display all the videos from the videogallery table  -->
+        <?php
+        $videogalleryQuery = "SELECT id, video_title, video_description, video_source FROM `videogallery`"; //Fetches video sources from database.
+        $videogalleryResultSet = mysqli_query($conn, $videogalleryQuery);  // connect to database and run the query
+         // loop to display the videos 
+		 while ($rows = mysqli_fetch_array($videogalleryResultSet)) { //Displays images, each in a new line.
+        ?>
+	  <iframe src="<?php echo $rows["video_source"]; ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
       </iframe>
-
-      <!-- Display the second entertainementvideo  -->
-      <iframe src="https://www.youtube.com/embed/804uNConaDg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-      </iframe>
-      <br>
-      <h2>Events suited for children!</h2>
-      <br />
-
-      <!-- Display the bubble video  -->
-      <iframe id="_ytid_62635" src="https://www.youtube.com/embed/KvBlZENkF5E">https://www.youtube.com/watch?enablejsapi=1&autoplay=0&cc_load_policy=0&iv_load_policy=1&loop=0&modestbranding=0&rel=1&showinfo=1&fs=1&playsinline=0&controls=2&autohide=2&theme=dark&color=red&" class="__youtube_prefs__" title="YouTube player" allow="autoplay; encrypted-media" allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll="">
-      </iframe>
+	  <?php
+        }
+        ?>
       <br />
       <br />
 
