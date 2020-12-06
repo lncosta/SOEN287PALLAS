@@ -1,4 +1,15 @@
 <?php
+/*  SOEN 287 Group Project Fall 2020
+    Team 8 - PALLAS Entertainment
+    Team members:
+    Florian Charreau (26494889) 
+    Piyush Goyal(40106759) 
+    Aline Kurkdjian (40131528)
+    Joseph Mezzacappa(40134799)
+    Luiza Nogueira Costa (40124771)
+    Yi Heng Yan (40060587)
+    This page allows the user to update their password.  
+*/
 session_start();
 // Check if the user is logged in, if not then redirect to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -13,13 +24,19 @@ $new_password_err = $confirm_password_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (empty(trim($_POST["new_password"]))) {
+    $pattern = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,}$/'; //Standard pattern for password match.
+
+    //Verifying user input:
+    if (empty(trim($_POST["new_password"]))) { //Check if password is empty
         $new_password_err = "Please enter a password.";
+    } else if (!preg_match($pattern,$_POST["new_password"])){ //Check if passwird matches the pattern
+        $new_password_err = "Password must contain at least one capital letter, one number, and one special character. It must have at least 8 characters.";
+
     }
     if (empty(trim($_POST["confirm_password"]))) {
         $new_password_err = "Please confirm the password.";
     }
-    if ($_POST["new_password"] != $_POST["confirm_password"]) {
+    if ($_POST["new_password"] != $_POST["confirm_password"]) { //Check that both passwords match
         $new_password_err = "Passwords do not match.";
     }
 
