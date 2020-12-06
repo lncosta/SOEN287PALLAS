@@ -50,7 +50,9 @@
             float: left;
             margin-top: 3px;
         }
-
+    summary{
+        cursor: pointer;
+    }
         details {
             background-color: #f6f6f6;
             padding: 10px 20px;
