@@ -2,7 +2,7 @@
 // Initialize the session
 session_start();
 
-if (isset($_SESSION["mainpage_discount"])) {//Retrieves discount if user accessed page through home page buttons.
+if (isset($_SESSION["mainpage_discount"])) { //Retrieves discount if user accessed page through home page buttons.
     $discount = $_SESSION["mainpage_discount"];
 } else {
     $discount = 0;
@@ -29,8 +29,8 @@ while ($rows = mysqli_fetch_assoc($result)) { //Creates an array containing all 
         Joseph Mezzacappa(40134799)
         Luiza Nogueira Costa (40124771)
         Yi Heng Yan (40060587)
+        This page allows the user to request a quote estimation and book an event. 
     -->
-
 
 <head>
     <style type="text/css">
@@ -186,7 +186,7 @@ while ($rows = mysqli_fetch_assoc($result)) { //Creates an array containing all 
                 showModal(); //Shows modal.
             }
         }
- 
+
         function validateForm() { //Validates that no form fields are empty.
             if (document.getElementById("fname").value == "") {
                 return false;
@@ -217,6 +217,15 @@ while ($rows = mysqli_fetch_assoc($result)) { //Creates an array containing all 
         function submitQuote() { //Submits form only if it passes all client-side checks.
             document.forms["myform"].submit();
             alert("Quote has been sumitted");
+        }
+
+        function payNow() {
+            //Submits form only if it passes all client-side checks, submits with pay now discount. 
+            document.getElementById("quote").value = 0.9 * parseInt(document.getElementById("quote").value);
+            document.forms["myform"].action = "saveformpaynow.php";
+            document.forms["myform"].submit();
+            alert("Quote has been sumitted");
+
         }
     </script>
 
@@ -376,7 +385,7 @@ while ($rows = mysqli_fetch_assoc($result)) { //Creates an array containing all 
                     <p>Book now and receive a 10% discount! Otherwise, we will get back to you in 5 business days.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" name="submitForm2" class="submitbutton" onclick="">Book Now!</button>
+                    <button type="button" name="submitForm2" class="submitbutton" onclick="payNow()">Book Now!</button>
                     <button type="button" name="submitForm" class="submitbutton" onclick="submitQuote()">Request Quote via Email and Close.</button>
                 </div>
             </div>
