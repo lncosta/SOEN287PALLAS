@@ -1,4 +1,16 @@
 <?php
+/*  SOEN 287 Group Project Fall 2020
+    Team 8 - PALLAS Entertainment
+    Team members:
+    Florian Charreau (26494889) 
+    Piyush Goyal(40106759) 
+    Aline Kurkdjian (40131528)
+    Joseph Mezzacappa(40134799)
+    Luiza Nogueira Costa (40124771)
+    Yi Heng Yan (40060587)
+    This page is checkout page for ticket purchases. The user inputs their payment information and the purchase is processed. 
+*/
+
 
 include_once('connect.php');
 $query = "SELECT * FROM `upcoming events`";
@@ -8,7 +20,7 @@ require_once "config.php";
 session_start();
 $date = $_SESSION['date'];
 $location = $_SESSION['location'];
-$price = $_SESSION['price'];
+$price = str_replace("$", "", $_SESSION['eventprice']);
 $type = $_SESSION['type'];
 
 
@@ -41,28 +53,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate email
     if (empty(trim($_POST["email"]))) {
-        $email_err = "Please enter your last name.";
+        $email_err = "Please enter your email.";
     } else {
         $email = trim($_POST["email"]);
     }
 
     // Validate country
     if (empty(trim($_POST["country"]))) {
-        $country_err = "Please enter your last name.";
+        $country_err = "Please enter your country.";
     } else {
         $country = trim($_POST["country"]);
     }
 
     // Validate card type
     if (empty(trim($_POST["card_type"]))) {
-        $card_type_err = "Please enter your last name.";
+        $card_type_err = "Please enter your card type.";
     } else {
         $card_type = trim($_POST["card_type"]);
     }
 
     // Validate card number
     if (empty(trim($_POST["card_number"]))) {
-        $card_number_err = "Please enter your last name.";
+        $card_number_err = "Please enter your card number.";
     } else if (!(is_numeric($_POST["card_number"]))) {
         $card_number_err = "Please enter a number.";
     } else {
@@ -121,8 +133,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          */
 
 
-
-
         $_SESSION['fname'] = $fname;
         $_SESSION['lname'] = $lname;
         $_SESSION['card_type'] = $card_type;
@@ -135,12 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['city'] = $city;
         $_SESSION['postal_code'] = $zip;
 
-
-
-
         $sql = "INSERT INTO `ticketsale`(id, fname, lname, email, country, streetaddress, city, zip, paymenttype, cardnumber, cardholder, expirydate, CVV, datebooked, ticketquantity) VALUES ('$id', '$fname', '$lname', '$email', '$country', '$street_address', '$city', '$zip', '$card_type', '$card_number', '$cardholder', '$expiration_date', '$cvv', '$datebooked', '$ticket_quantity')";
-
-
 
         if (mysqli_query($link, $sql)) {
             echo "Records added successfully.";
@@ -154,8 +159,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-
-
     // Close connection
     mysqli_close($link);
 }
@@ -167,8 +170,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="Fancy.css" />
-    <script>
+
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript">
         function increment() {
             var price = <?php echo $price ?>;
             var value = parseInt(document.getElementById("ticket_quantity").value);
@@ -210,172 +214,276 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .help-block {
-            color: red;
+            color: lightcoral;
+        }
+
+        .checkout {
+            font-family: "Montserrat";
+            margin: 20px;
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+            background-image: url("media/images/pattern.jpg");
+            border-radius: 10px;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, .3);
+        }
+
+        input,
+        textarea,
+        select {
+            border-radius: 10px;
+            font-size: 1em;
+            border: 2px solid whitesmoke;
+            font-family: "Montserrat";
+            height: 30px;
+        }
+
+        textarea {
+            width: 100%;
+        }
+
+        table {
+            table-layout: fixed;
+            width: 100%;
+            text-align: left;
+        }
+
+        .checkout p {
+            color: white;
+        }
+
+        table td,
+        table td * {
+            vertical-align: top;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        fieldset {
+            border: 2px solid whitesmoke;
+            border-radius: 10px;
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        fieldset input {
+            width: 100%;
+        }
+
+        img {
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        button {
+            font-size: 1.15em;
+            background-color: lightblue;
+            color: black;
+            border: 2px solid lightblue;
+            border-radius: 5px;
+            text-decoration: none;
+            font-style: "Montserrat";
+        }
+
+        #ticket_quantity {
+            width: 50%;
         }
     </style>
+    <!--Google Fonts-->
+    <!--Luckiest Guy || Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
+    <!--Icons-->
+    <script src="https://kit.fontawesome.com/ba7a137c00.js" crossorigin="anonymous"></script>
+
 </head>
 
-<body style="background-image: url(media/images/pattern2.jpg);">
+<body>
+    <?php include("navbar.php"); ?>
+    <div class="checkout">
 
-    <form  name="checkout_form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-    <h1 style = "text-align: center;">Express Checkout</h1>
-        <table style = "margin-left: auto; margin-right:auto; border: solid white 3px; border-radius: 8px;">
-            <tr>
-                <th style = "font-size: 23px;" colspan=2>Billing Address</th>
-                <th  style = "font-size: 23px;" colspan=2>Payment</th>
-                <th  style = "font-size: 23px;" >Cart</th>
-            </tr>
-            <tr>
-                <td><label>First name</label>
-                    <br /> <input class="card" type="text" name="first_name" value="<?php echo $fname; ?>">
-                    <br />
-                    <span class="help-block"><?php echo $fname_err . "<br/>"; ?></span>
-                </td>
-                <td>Last name
-                    <br /> <input type="text" name="last_name" value="<?php echo $lname; ?>">
-                    <br />
-                    <span class="help-block"><?php echo $lname_err . "<br/>"; ?></span>
-                </td>
-
-                <td>
-                    <br />
-                    <div class=border>
-                        <label>
-                            <input style = "margin-left: 70px;" class="center" type="radio" name="card_type" value="credit card" checked>
-                            <br>
-                            <div class="center">
-                                Credit Card
-                            </div>
-                        </label>
-                    </div>
-                    <br />
-                    <span class="help-block"><?php echo $card_type_err . "<br/>"; ?></span>
-                </td>
-                <td style="width:165px;">
-                    <br>
-                    <div class="border">
-                        <label>
-                            <input style = "margin-left: 67px;" class="center" type="radio" name="card_type" value="paypal">
-
-                            <div class="center">Paypal</div>
-                        </label>
-                    </div>
-                    <br/>
-                    <span class="help-block"><?php echo $card_type_err . "<br/>"; ?></span>
-                </td>
-                <td rowspan=5 style=" padding: 5px; width: auto; height: auto; border: solid white 2px; vertical-align: top;">
-                    <div style="width: 100%; padding-left: 20px; padding-right: 20px; margin-top: 10px; ">
-                        <img src="media/images/minus.png" width=30px; height=30px; onclick="decrement()" style="top:0; vertical-align: middle;cursor:pointer;" on>
-                        <input value = 0 type=text name = "ticket_quantity" id="ticket_quantity" style="width: 30px; height: 30px; text-align: center; vertical-align: middle; ">
-                        <img src="media/images/plus.png" width=30px height=30px onclick="increment()" style="vertical-align: middle;cursor:pointer;">
-                    </div>
-                    <div style=" font-size: 20px; margin-top:10px; padding-top: 5px;border: solid white 1px;text-align: center; margin: 7px;">Event Details
-                        <div style=" font-size: 17px; margin-right: 5px; margin-top: 10px; ">Performance: <br> <text><?php echo $type ?></text></div>
-                        <div style=" font-size: 17px; padding: 5px; margin-right: 5px; margin-top: 5px; ">Location: <br> <text><?php echo $location?></text></div>
-                    </div>
-                    <div>
-                        <div style="font-size: 20px;margin: 10px; margin-top: 15px;">Price: <text id="dynamicPrice"></text></div>
-                        <div style="font-size: 20px;margin: 10px; ">Tax: <text id="tax"></text></div>
-                        <div style="font-size: 20px;margin: 10px; ">Subtotal: <text id="subtotal"></text></div>
-                    </div>
-                    <button style="text-align: center; width: 100%; height: 40px; font-size: 20px; cursor: pointer;">Checkout</button>
-            </tr>
-
-            <tr>
-                <td colspan="2">
-                    <label>Email</label>
-                    </br>
-                    <input type="text" name="email" value="<?php echo $email; ?>">
-                    <br />
-                    <span class="help-block"><?php echo $email_err . "<br/>"; ?></span>
-                </td>
-                <td  colspan="2">
-                    <fieldset style="height: 55px; padding: 15px; padding-top: 3px;" class="card">
-                        <legend>Card Number</legend>
-                        <input style = " height: 30px; margin-bottom: 0px; bottom: 30px;" class="none" type='text' name=card_number>
+        <form name="checkout_form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <h1>Express Checkout</h1>
+            <table>
+                <tr>
+                    <th colspan=2>Billing Address</th>
+                    <th colspan=2>Payment</th>
+                    <th>Cart</th>
+                </tr>
+                <tr>
+                    <td><label>First name</label>
+                        <br /> <input class="card" type="text" placeholder="First Name" name="first_name" value="<?php echo $fname; ?>">
                         <br />
-                        <span class="help-block"><?php echo $card_number_err . "<br/>"; ?></span>
-                    </fieldset>
-                </td>
-            </tr>
-            <tr>
-                <td colspan=2>
-                    <label>Country</label>
-                    </br>
-                    <select name="country" value="<?php echo $country; ?>">
-                        <option value="Argentina">Argentina</option>
-                        <option value="Canada">Canada</option>
-                        <option value="United States">United States</option>
-                    </select>
-                </td>
-                <td colspan=2 style = "height: 90px;">
-                    <fieldset class="card">
-                       
-                            <input style = "margin-bottom: 10px;" class="none" type="text" name="cardholder_name" placeholder="Cardholder Name">
+                        <span class="help-block"><?php echo $fname_err . "<br/>"; ?></span>
+                    </td>
+                    <td>Last name
+                        <br /> <input type="text" name="last_name" placeholder="Last Name" value="<?php echo $lname; ?>">
+                        <br />
+                        <span class="help-block"><?php echo $lname_err . "<br/>"; ?></span>
+                    </td>
+
+                    <td>
+                        <br />
+                        <div class=border>
+                            <label>
+                                <input class="center" type="radio" name="card_type" placeholder="Card Type" value="credit card" checked>
+                                <br>
+                                <div class="center">
+                                    Credit Card
+                                </div>
+                            </label>
+                        </div>
+                        <br />
+                        <span class="help-block"><?php echo $card_type_err . "<br/>"; ?></span>
+                    </td>
+                    <td>
+                        <br>
+                        <div class="border">
+                            <label>
+                                <input class="center" type="radio" name="card_type" value="paypal">
+
+                                <div class="center">Paypal</div>
+                            </label>
+                        </div>
+                        <br />
+                        <span class="help-block"><?php echo $card_type_err . "<br/>"; ?></span>
+                    </td>
+                    <td rowspan=5>
+                        <table>
+                            <tr>
+                                <td><img src="media/images/minus.png" width="30px" height="30px" onclick="decrement()"></td>
+                                <td><input type="text" width="15px" name="ticket_quantity" id="ticket_quantity" value="0" /></td>
+                                <td><img src="media/images/plus.png" width=30px height=30px onclick="increment()"></td>
+                            </tr>
+
+
+                            <tr>
+                                <td colspan="3"> Event Details:</td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3"> Performance: <text><?php echo $type; ?></text></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"> Location: <br> <text><?php echo $location; ?></text></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Price: <p id="dynamicPrice"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Tax: <p id="tax"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Subtotal: <p id="subtotal"></p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3"><button>Checkout</button></td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <label>Email</label>
+                        </br>
+                        <input type="text" name="email" placeholder="mail@mail.com" value="<?php echo $email; ?>">
+                        <br />
+                        <span class="help-block"><?php echo $email_err . "<br/>"; ?></span>
+                    </td>
+                    <td colspan="2">
+                        <fieldset class="card">
+                            <legend>Card Number</legend>
+                            <input class="none" type='text' placeholder="0000 0000 0000" name=card_number>
                             <br />
-                            <span style = " text-align: center; width: 100%;"class="help-block" ><?php echo $cardholder_err . "<br/>"; ?></span>
-                            <!--REMEMBER TO CHANGE-->
-                        
-                    </fieldset>
+                            <span class="help-block"><?php echo $card_number_err . "<br/>"; ?></span>
+                        </fieldset>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=2>
+                        <label>Country</label>
+                        </br>
+                        <select name="country" value="<?php echo $country; ?>">
+                            <option value="Argentina">Argentina</option>
+                            <option value="Canada">Canada</option>
+                            <option value="United States">United States</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                    <td colspan=2>
+                        <fieldset class="card">
+                            <legend>Name on Card</legend>
+                            <input class="none" type="text" placeholder="Name on Card" name="cardholder_name" placeholder="Cardholder Name">
+                            <br />
+                            <span class="help-block"><?php echo $cardholder_err . "<br/>"; ?></span>
 
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label>Street Address</label>
-                    <br>
-                    <input type="text" name="street_address" placeholder="Street" value="<?php echo $street_address; ?>">
-                    <br />
-                    <span class="help-block"><?php echo $street_address_err . "<br/>"; ?></span>
-                </td>
-                <td>
-                    <div class="exp">
-                        <input class="exp" type="type" name="expiration_date" placeholder="Expiration Date" value="<?php echo $expiration_date; ?>" onfocus="(this.type = 'date')">
+                        </fieldset>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label>Street Address</label>
+                        <br>
+                        <input type="text" name="street_address" placeholder="Street" value="<?php echo $street_address; ?>">
                         <br />
-                        <span class="help-block"><?php echo $expiration_date_err . "<br/>"; ?></span>
-                    </div>
-                </td>
-                <td>
-                    <div style = "height: 48px;" class="exp">
-                        <input class="exp" type="text" name="CVV" placeholder="CVV" maxlength="3" value="<?php echo $cvv; ?>">
+                        <span class="help-block"><?php echo $street_address_err . "<br/>"; ?></span>
+                    </td>
+                    <td>
+                        <div class="exp">
+                            <input class="exp" type="type" name="expiration_date" placeholder="Expiration Date" value="<?php echo $expiration_date; ?>" onfocus="(this.type = 'date')">
+                            <br />
+                            <span class="help-block"><?php echo $expiration_date_err . "<br/>"; ?></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="exp">
+                            <input class="exp" type="text" name="CVV" placeholder="CVV" maxlength="3" value="<?php echo $cvv; ?>">
+                            <br />
+                            <span class="help-block"><?php echo $cvv_err . "<br/>"; ?></span>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <label>Town/City</label>
+                        <br>
+                        <input class="two" type="text" name="city" placeholder="City" value="<?php echo $city; ?>">
                         <br />
-                        <span class="help-block"><?php echo $cvv_err . "<br/>"; ?></span>
+                        <span class="help-block"><?php echo $city_err . "<br/>"; ?></span>
+                    </td>
+                    <td>
+                        <label>Postal Code</label>
+                        <br>
+                        <input type="text" name="postal_code" placeholder="0000-0000" value="<?php echo $zip; ?>">
+                        <br />
+                        <span class="help-block"><?php echo $zip_err . "<br/>"; ?></span>
+                    </td>
 
-                    </div>
-                </td>
-            </tr>
-            <tr>
+                </tr>
+            </table>
 
-                <td>
-                    <label>Town/City</label>
-                    <br>
-                    <input class="two" type="text" name="city" value="<?php echo $city; ?>">
-                    <br />
-                    <span class="help-block"><?php echo $city_err . "<br/>"; ?></span>
-                </td>
-                <td>
-                    <label>Postal Code</label>
-                    <br>
-                    <input type="text" name="postal_code" value="<?php echo $zip; ?>">
-                    <br />
-                    <span class="help-block"><?php echo $zip_err . "<br/>"; ?></span>
-                </td>
-
-            </tr>
-        </table>
-
-        </table>
-    </form>
-    </p>
+            </table>
+        </form>
+    </div>
     <footer class="white-section" id="footer">
         <div class="container-fluid">
-          <i class="footer-icon fab fa-twitter"></i>
-          <i class="footer-icon fab fa-facebook-f"></i>
-          <i class="footer-icon fab fa-instagram"></i>
-          <i class="footer-icon fas fa-envelope"></i>
-          <p>© Copyright 2020 PALLAS Entertainment</p>
+            <i class="footer-icon fab fa-twitter"></i>
+            <i class="footer-icon fab fa-facebook-f"></i>
+            <i class="footer-icon fab fa-instagram"></i>
+            <i class="footer-icon fas fa-envelope"></i>
+            <p>© Copyright 2020 PALLAS Entertainment</p>
         </div>
-      </footer>
+    </footer>
 </body>
 
 </html>
