@@ -1,4 +1,15 @@
 <?php
+/*  SOEN 287 Group Project Fall 2020
+    Team 8 - PALLAS Entertainment
+    Team members:
+    Florian Charreau (26494889) 
+    Piyush Goyal(40106759) 
+    Aline Kurkdjian (40131528)
+    Joseph Mezzacappa(40134799)
+    Luiza Nogueira Costa (40124771)
+    Yi Heng Yan (40060587)
+    This page is the send the confirmation email for a ticket purchase. 
+*/
 /**
  * PHP Template for using PHPMailer to send emails.
  * Before sending emails using the Gmail's SMTP Server, you must make some of the security and permission level     
@@ -16,7 +27,7 @@ use PHPMailer\PHPMailer\SMTP;
 session_start();
 
 $type = $_SESSION['type'];
-$price = $_SESSION['price'];
+$price = $_SESSION['eventprice'];
 $location = $_SESSION['location'];
 $first_name = $_SESSION['fname'];
 $last_name = $_SESSION['lname'];
@@ -80,7 +91,7 @@ require 'vendor/autoload.php';
 //Create a new PHPMailer instance
 $mail = new PHPMailer;
 //Tell PHPMailer to use SMTP
-$mail->isSMTP();
+$mail->isMail();
 //Enable SMTP debugging
 // SMTP::DEBUG_OFF = off (for production use)
 // SMTP::DEBUG_CLIENT = client messages
